@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:menstrual_period_tracker/auth_controller.dart';
+import 'package:menstrual_period_tracker/input1.dart';
 
+// ignore: must_be_immutable
 class Welcome extends StatelessWidget {
-  String ? email;
-  
-  Welcome({super.key, this.email='defualt'});
+  String? email;
+
+  Welcome({super.key, this.email = 'defualt'});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +19,7 @@ class Welcome extends StatelessWidget {
           Container(
             width: w,
             height: h * 0.3,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 image: DecorationImage(
               image: AssetImage("assets/images/signup.png"),
               fit: BoxFit.cover,
@@ -25,7 +28,7 @@ class Welcome extends StatelessWidget {
               SizedBox(
                 height: h * 0.15,
               ),
-              CircleAvatar(
+              const CircleAvatar(
                 backgroundColor: Colors.white70,
                 radius: 60,
                 backgroundImage: AssetImage("assets/images/profile.png"),
@@ -34,7 +37,7 @@ class Welcome extends StatelessWidget {
           ),
           Container(
               color: Colors.white,
-              margin: EdgeInsets.only(left: 20, right: 20),
+              margin: const EdgeInsets.only(left: 20, right: 20),
               width: w,
               child: Column(
                 children: [
@@ -64,7 +67,7 @@ class Welcome extends StatelessWidget {
                         boxShadow: [
                           BoxShadow(
                               blurRadius: 10,
-                              offset: Offset(1, 1),
+                              offset: const Offset(1, 1),
                               color: Colors.grey.withOpacity(0.2))
                         ]),
                   ),
@@ -78,20 +81,18 @@ class Welcome extends StatelessWidget {
             height: h * 0.07,
             width: w,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(left: 50),
             child: Text(
               "हाम्रो अप्प्लिकेशन मा स्वागत छ ",
               style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
             ),
           ),
-          
           Padding(
-            padding: EdgeInsets.only(left: 50),
-         
+            padding: const EdgeInsets.only(left: 50),
             child: Text(
-              email ??"loading",
-              style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+              email ?? "loading",
+              style: const TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
             ),
           ),
           SizedBox(
@@ -106,6 +107,27 @@ class Welcome extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
+                  Get.to(() => const Picker());
+                },
+                child: Container(
+                  width: w * 0.5,
+                  height: h * 0.08,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      image: const DecorationImage(
+                        image: AssetImage("assets/images/loginbtn.png"),
+                        fit: BoxFit.cover,
+                      )),
+                  child: const Center(
+                    child: Text(
+                      "अर्को ",
+                      style: TextStyle(fontSize: 32, color: Colors.white),
+                    ),
+                  ), //one third of HEIGHT of the
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
                   AuthController.instance.logout();
                 },
                 child: Container(
@@ -113,11 +135,11 @@ class Welcome extends StatelessWidget {
                   height: h * 0.08,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
-                      image: DecorationImage(
+                      image: const DecorationImage(
                         image: AssetImage("assets/images/loginbtn.png"),
                         fit: BoxFit.cover,
                       )),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       "साइन आउट",
                       style: TextStyle(fontSize: 32, color: Colors.white),

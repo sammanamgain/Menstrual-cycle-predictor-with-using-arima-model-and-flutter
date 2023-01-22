@@ -20,7 +20,7 @@ class SignUp extends StatelessWidget {
             Container(
               width: w,
               height: h * 0.3,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   image: DecorationImage(
                 image: AssetImage("assets/images/signup.png"),
                 fit: BoxFit.cover,
@@ -29,7 +29,7 @@ class SignUp extends StatelessWidget {
                 SizedBox(
                   height: h * 0.15,
                 ),
-                CircleAvatar(
+                const CircleAvatar(
                   backgroundColor: Colors.white70,
                   radius: 60,
                   backgroundImage: AssetImage("assets/images/profile.png"),
@@ -38,7 +38,7 @@ class SignUp extends StatelessWidget {
             ),
             Container(
                 color: Colors.white,
-                margin: EdgeInsets.only(left: 20, right: 20),
+                margin: const EdgeInsets.only(left: 20, right: 20),
                 width: w,
                 child: Column(
                   children: [
@@ -53,7 +53,7 @@ class SignUp extends StatelessWidget {
                           boxShadow: [
                             BoxShadow(
                                 blurRadius: 10,
-                                offset: Offset(1, 1),
+                                offset: const Offset(1, 1),
                                 color: Colors.grey.withOpacity(0.2))
                           ]),
                       child: TextField(
@@ -61,11 +61,11 @@ class SignUp extends StatelessWidget {
                         // obscureText: true,
                         decoration: InputDecoration(
                             hintText: "तपाई को इमेल आईडी ",
-                            prefixIcon: Icon(
+                            prefixIcon: const Icon(
                               Icons.email,
                               color: Colors.deepOrangeAccent,
                             ),
-                            focusedBorder: OutlineInputBorder(
+                            focusedBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.white24)),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30))),
@@ -82,7 +82,7 @@ class SignUp extends StatelessWidget {
                           boxShadow: [
                             BoxShadow(
                                 blurRadius: 10,
-                                offset: Offset(1, 1),
+                                offset: const Offset(1, 1),
                                 color: Colors.grey.withOpacity(0.2))
                           ]),
                       child: TextField(
@@ -90,11 +90,11 @@ class SignUp extends StatelessWidget {
                         obscureText: true,
                         decoration: InputDecoration(
                             hintText: "पासवोर्ड ",
-                            prefixIcon: Icon(
+                            prefixIcon: const Icon(
                               Icons.password,
                               color: Colors.deepOrangeAccent,
                             ),
-                            focusedBorder: OutlineInputBorder(
+                            focusedBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.white24)),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30))),
@@ -104,19 +104,6 @@ class SignUp extends StatelessWidget {
                       height: h * 0.03,
                       width: w,
                     ),
-                    /*  Row(
-                      children: [
-                        SizedBox(
-                          width: w * 0.5,
-                        ),
-                        Text(
-                          "पस्स्वोर्ड बिर्सिनु भयो ? ",
-                          style: TextStyle(
-                            fontSize: 15,
-                          ),
-                        ),
-                      ],
-                    ),*/
                   ],
                 )),
             SizedBox(
@@ -137,11 +124,11 @@ class SignUp extends StatelessWidget {
                     height: h * 0.08,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
-                        image: DecorationImage(
+                        image: const DecorationImage(
                           image: AssetImage("assets/images/loginbtn.png"),
                           fit: BoxFit.cover,
                         )),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         "दर्ता गर्नुहोस ",
                         style: TextStyle(fontSize: 32, color: Colors.white),
@@ -180,6 +167,7 @@ class SignUp extends StatelessWidget {
                             child: CircleAvatar(
                               radius: 25,
                               backgroundImage:
+                                  // ignore: prefer_interpolation_to_compose_strings
                                   AssetImage("assets/images/" + images[index]),
                             ),
                           ),

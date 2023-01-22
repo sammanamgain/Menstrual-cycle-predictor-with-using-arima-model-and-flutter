@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:menstrual_period_tracker/input1.dart';
+import 'package:menstrual_period_tracker/input2.dart';
 import 'package:menstrual_period_tracker/signup.dart';
 import 'package:menstrual_period_tracker/welcome.dart';
 
@@ -21,7 +23,7 @@ class _SplashState extends State<Splash> {
 
     Timer(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const Login()));
+          context, MaterialPageRoute(builder: (context) => const Days()));
     });
   }
 

@@ -27,7 +27,7 @@ class _LoginState extends State<Login> {
             Container(
               width: w,
               height: h * 0.3,
-              decoration: BoxDecoration(
+              decoration:const BoxDecoration(
                   image: DecorationImage(
                 image: AssetImage("assets/images/loginimg.png"),
                 fit: BoxFit.cover,
@@ -35,11 +35,11 @@ class _LoginState extends State<Login> {
             ),
             Container(
                 color: Colors.white,
-                margin: EdgeInsets.only(left: 20, right: 20),
+                margin:const EdgeInsets.only(left: 20, right: 20),
                 width: w,
                 child: Column(
                   children: [
-                    Text(
+                    const Text(
                       "नमस्ते",
                       style:
                           TextStyle(fontSize: 70, fontWeight: FontWeight.bold),
@@ -59,18 +59,18 @@ class _LoginState extends State<Login> {
                           boxShadow: [
                             BoxShadow(
                                 blurRadius: 10,
-                                offset: Offset(1, 1),
+                                offset:const Offset(1, 1),
                                 color: Colors.grey.withOpacity(0.2))
                           ]),
                       child: TextField(
                         controller: emailcontroller,
                         decoration: InputDecoration(
                             hintText: "तपाई को इमेल आईडी ",
-                            prefixIcon: Icon(
+                            prefixIcon:const Icon(
                               Icons.email,
                               color: Colors.deepOrangeAccent,
                             ),
-                            focusedBorder: OutlineInputBorder(
+                            focusedBorder:const OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.white24)),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30))),
@@ -87,18 +87,18 @@ class _LoginState extends State<Login> {
                           boxShadow: [
                             BoxShadow(
                                 blurRadius: 10,
-                                offset: Offset(1, 1),
+                                offset:const Offset(1, 1),
                                 color: Colors.grey.withOpacity(0.2))
                           ]),
                       child: TextField(
                         controller: passwordcontroller,
                         decoration: InputDecoration(
                             hintText: "पासवोर्ड ",
-                            prefixIcon: Icon(
+                            prefixIcon:const Icon(
                               Icons.password,
                               color: Colors.deepOrangeAccent,
                             ),
-                            focusedBorder: OutlineInputBorder(
+                            focusedBorder:const OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.white24)),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30))),
@@ -113,7 +113,7 @@ class _LoginState extends State<Login> {
                         SizedBox(
                           width: w * 0.5,
                         ),
-                        Text(
+                      const  Text(
                           "पस्स्वोर्ड बिर्सिनु भयो ? ",
                           style: TextStyle(
                             fontSize: 15,
@@ -141,11 +141,11 @@ class _LoginState extends State<Login> {
                     height: h * 0.08,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
-                        image: DecorationImage(
+                        image:const  DecorationImage(
                           image: AssetImage("assets/images/loginbtn.png"),
                           fit: BoxFit.cover,
                         )),
-                    child: Center(
+                    child:const  Center(
                       child: Text(
                         "साइन गर ",
                         style: TextStyle(fontSize: 36, color: Colors.white),
@@ -164,20 +164,7 @@ class _LoginState extends State<Login> {
                 SizedBox(
                   width: w * 0.3,
                 ),
-                /*   Row(
-                  children: [
-                    Text("तपाई संग खाता छैन ? "),
-                    GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const SignUp(),
-                            ),
-                          );
-                        },
-                        child: Text("खोल्नुहोस ")),
-                  ],
-                )*/
+              
                 RichText(
                   text: TextSpan(
                       text: "तपाई संग खाता छैन ? ",
@@ -192,8 +179,7 @@ class _LoginState extends State<Login> {
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
-                          /*  recognizer: TapGestureRecognizer()
-                              ..onTap=() => Get.to(() =>const SignUp())*/
+                        
                         )
                       ]),
                 ),
