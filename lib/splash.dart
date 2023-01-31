@@ -1,10 +1,11 @@
 import 'dart:async';
-import 'package:menstrual_period_tracker/input1.dart';
-import 'package:menstrual_period_tracker/input2.dart';
-import 'package:menstrual_period_tracker/signup.dart';
+//import 'package:menstrual_period_tracker/input1.dart';
+//import 'package:menstrual_period_tracker/input2.dart';
+import 'package:menstrual_period_tracker/loginsignup/loginsignup.dart';
+import 'package:menstrual_period_tracker/screens/calendar.dart';
+import 'package:menstrual_period_tracker/timerui.dart';
+//import 'package:menstrual_period_tracker/signup.dart';
 import 'package:menstrual_period_tracker/welcome.dart';
-
-import './loginsignup.dart';
 import 'package:flutter/material.dart';
 import 'package:menstrual_period_tracker/main.dart';
 import 'package:get/get.dart';
@@ -23,7 +24,7 @@ class _SplashState extends State<Splash> {
 
     Timer(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const Days()));
+          context, MaterialPageRoute(builder: (context) => const MyApps()));
     });
   }
 

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 //import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
-import 'package:menstrual_period_tracker/input2.dart';
+import 'package:menstrual_period_tracker/input/input2.dart';
+import 'package:nepali_date_picker/nepali_date_picker.dart';
 
 class Picker extends StatefulWidget {
   const Picker({super.key});
@@ -12,16 +13,16 @@ class Picker extends StatefulWidget {
 }
 
 class _PickerState extends State<Picker> {
-  DateTime _dateTime = DateTime.now();
+  NepaliDateTime _dateTime = NepaliDateTime.now();
   void _showdatepicker() async {
     await showDatePicker(
-            context: context,
-            initialDate: DateTime.now(),
-            firstDate: DateTime(2002),
-            lastDate: DateTime.now())
-        .then((value) {
+      context: context,
+      initialDate: NepaliDateTime.now(),
+      firstDate: NepaliDateTime(2078),
+      lastDate: NepaliDateTime.now(),
+    ).then((value) {
       setState(() {
-        _dateTime = value!;
+        _dateTime = NepaliDateTime.tryParse(value.toString())!;
       });
     });
   }
@@ -31,9 +32,11 @@ class _PickerState extends State<Picker> {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
+    final formatter = NepaliDateFormat('yyyy-MM-dd');
+    final formatted = formatter.format(_dateTime);
 
     return Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.pink[100],
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -49,11 +52,12 @@ class _PickerState extends State<Picker> {
               const Text(
                 "तपाई को पछिलो महिनावारी कहिले सुरु भएको थियो ?",
                 style: TextStyle(
-                    color: Colors.pink,
+                    color: Colors.black,
                     fontSize: 22,
                     fontWeight: FontWeight.bold),
               ),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.black),
                 onPressed: _showdatepicker,
                 // Colors.blue,
                 child: const Padding(
@@ -72,17 +76,16 @@ class _PickerState extends State<Picker> {
                 width: w,
               ),
               Text(
-                _dateTime.toString(),
+                formatted.toString(),
                 style: const TextStyle(
                     color: Colors.pink,
                     fontSize: 22,
                     fontWeight: FontWeight.bold),
               ),
-                  GestureDetector(
+              GestureDetector(
                 onTap: () {
                   Get.to(() => const Days());
-                }
-                ,
+                },
                 child: Container(
                   width: w * 0.5,
                   height: h * 0.08,
@@ -94,14 +97,12 @@ class _PickerState extends State<Picker> {
                       )),
                   child: const Center(
                     child: Text(
-                      "साइन आउट",
+                      "अर्कों ",
                       style: TextStyle(fontSize: 32, color: Colors.white),
                     ),
                   ), //one third of HEIGHT of the
                 ),
               ),
-            
-
             ],
           ),
           // ignore: prefer_const_literals_to_create_immutables

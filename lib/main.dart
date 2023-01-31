@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:menstrual_period_tracker/auth_controller.dart';
+import 'package:menstrual_period_tracker/screens/calendar.dart';
+import 'package:menstrual_period_tracker/timerui.dart';
 
 import './splash.dart';
 
-import './loginsignup.dart';
+import 'loginsignup/loginsignup.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 //import './home.dart';
@@ -32,8 +34,8 @@ class _MyAppState extends State<MyApp> {
       // theme: ThemeData(fontFamily: 'Caveat'),
       home: Scaffold(
           body: Column(
-        children: const [
-          Login(),
+        children: [
+          CalendarDatePickerWidget(),
         ],
       )),
     );

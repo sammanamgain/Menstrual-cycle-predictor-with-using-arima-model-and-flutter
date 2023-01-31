@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-import 'package:menstrual_period_tracker/loginsignup.dart';
+import 'package:menstrual_period_tracker/loginsignup/loginsignup.dart';
 import 'package:menstrual_period_tracker/welcome.dart';
 
 class AuthController extends GetxController {
@@ -33,14 +33,14 @@ class AuthController extends GetxController {
     // _user chai listner ho jun firebase le pathauxa , tesko aadar ma initalscreen chalxa
   }
 
-  _initialScreen(User ? user) {
+  _initialScreen(User? user) {
     if (user == null) {
       //user le login gareko xaina
       print("login page");
       Get.offAll(() => Login());
     } else {
       //login garko xa
-      Get.offAll(() => Welcome(email:user.email));
+      Get.offAll(() => Welcome(email: user.email));
     }
   }
 
@@ -80,7 +80,8 @@ class AuthController extends GetxController {
           ));
     }
   }
-    void logout() async {
+
+  void logout() async {
     auth.signOut();
   }
 }

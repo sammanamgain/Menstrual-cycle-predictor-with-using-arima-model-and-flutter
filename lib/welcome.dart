@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:menstrual_period_tracker/auth_controller.dart';
-import 'package:menstrual_period_tracker/input1.dart';
+//import 'package:menstrual_period_tracker/auth_controller.dart';
+import 'package:menstrual_period_tracker/input/input1.dart';
 
 // ignore: must_be_immutable
 class Welcome extends StatelessWidget {
@@ -126,9 +126,21 @@ class Welcome extends StatelessWidget {
                   ), //one third of HEIGHT of the
                 ),
               ),
+            ],
+          ),
+          SizedBox(
+            height: h * 0.07,
+            width: w,
+          ),
+          Row(
+            children: [
+              SizedBox(
+                height: h * 0.08,
+                width: w * 0.25,
+              ),
               GestureDetector(
                 onTap: () {
-                  AuthController.instance.logout();
+                  Get.to(() => const Picker());
                 },
                 child: Container(
                   width: w * 0.5,
