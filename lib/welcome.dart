@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 //import 'package:menstrual_period_tracker/auth_controller.dart';
 import 'package:menstrual_period_tracker/input/input1.dart';
+import 'package:menstrual_period_tracker/loginsignup/loginsignup.dart';
 
 // ignore: must_be_immutable
 class Welcome extends StatelessWidget {
@@ -140,7 +141,7 @@ class Welcome extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  Get.to(() => const Picker());
+                  Get.to(() => const Login());
                 },
                 child: Container(
                   width: w * 0.5,

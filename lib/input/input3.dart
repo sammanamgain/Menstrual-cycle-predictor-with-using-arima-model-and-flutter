@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:menstrual_period_tracker/timerui.dart';
 
 import 'input2.dart';
 
@@ -60,7 +63,7 @@ class _LengthState extends State<Length> {
           ),
           GestureDetector(
             onTap: () {
-              Get.to(() => const Days());
+              Get.to(() => const MyApps());
             },
             child: Container(
               width: w * 0.5,

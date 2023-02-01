@@ -1,6 +1,13 @@
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:menstrual_period_tracker/screens/content.dart';
+import 'package:menstrual_period_tracker/screens/stat.dart';
+import 'package:menstrual_period_tracker/symptoms.dart';
 import 'package:nepali_date_picker/nepali_date_picker.dart';
 import 'package:nepali_utils/nepali_utils.dart';
 import 'package:flutter/material.dart' hide CalendarDatePicker;
+
+import '../timerui.dart';
 //import 'Content.dart';
 
 void main() => runApp(Calendar());
@@ -43,6 +50,52 @@ class _CalendarState extends State<Calendar> {
             ],
           ),
           body: CalendarDatePickerWidget(),
+          bottomNavigationBar: BottomNavigationBar(
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                  icon: GestureDetector(
+                      onTap: () {
+                        Get.to(() => const MyApps());
+                      },
+                      child: const Icon(Icons.timer)),
+                  label: '',
+                  backgroundColor: const Color.fromARGB(255, 177, 128, 144)),
+              BottomNavigationBarItem(
+                  icon: GestureDetector(
+                      onTap: () {
+                        Get.to(() => const Calendar());
+                      },
+                      child: const Icon(Icons.calendar_month)),
+                  label: '',
+                  backgroundColor: const Color.fromARGB(255, 177, 128, 144)),
+              BottomNavigationBarItem(
+                  icon: GestureDetector(
+                      onTap: () {
+                        Get.to(() => const MyHomePage(
+                              title: 'hh',
+                            ));
+                      },
+                      child: const Icon(Icons.girl_sharp)),
+                  label: '',
+                  backgroundColor: const Color.fromARGB(255, 177, 128, 144)),
+              BottomNavigationBarItem(
+                  icon: GestureDetector(
+                      onTap: () {
+                        Get.to(() => const Stat());
+                      },
+                      child: const Icon(Icons.auto_graph)),
+                  label: '',
+                  backgroundColor: const Color.fromARGB(255, 177, 128, 144)),
+              BottomNavigationBarItem(
+                  icon: GestureDetector(
+                      onTap: () {
+                        Get.to(() => const Content());
+                      },
+                      child: const Icon(Icons.content_copy)),
+                  label: '',
+                  backgroundColor: const Color.fromARGB(255, 177, 128, 144)),
+            ],
+          ),
         ));
   }
 }

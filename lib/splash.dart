@@ -3,6 +3,8 @@ import 'dart:async';
 //import 'package:menstrual_period_tracker/input2.dart';
 import 'package:menstrual_period_tracker/loginsignup/loginsignup.dart';
 import 'package:menstrual_period_tracker/screens/calendar.dart';
+import 'package:menstrual_period_tracker/screens/content.dart';
+import 'package:menstrual_period_tracker/screens/stat.dart';
 import 'package:menstrual_period_tracker/timerui.dart';
 //import 'package:menstrual_period_tracker/signup.dart';
 import 'package:menstrual_period_tracker/welcome.dart';
@@ -18,15 +20,18 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
+
   @override
   void initState() {
+    
     super.initState();
 
     Timer(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const MyApps()));
+          context, MaterialPageRoute(builder: (context) => const Login()));
     });
   }
+
 
   @override
   Widget build(BuildContext context) {

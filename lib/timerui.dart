@@ -1,9 +1,16 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:menstrual_period_tracker/screens/calendar.dart';
+import 'package:menstrual_period_tracker/screens/content.dart';
+import 'package:menstrual_period_tracker/screens/stat.dart';
+import 'package:menstrual_period_tracker/symptoms.dart';
 import 'package:menstrual_period_tracker/screens/timer.dart';
+
+import 'loginsignup/signup.dart';
 
 class MyApps extends StatelessWidget {
   const MyApps({Key? key}) : super(key: key);
@@ -93,31 +100,49 @@ class HomePage extends GetView<TimerController> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.timer),
+              icon: GestureDetector(
+                  onTap: () {
+                    Get.to(() => const MyApps());
+                  },
+                  child: const Icon(Icons.timer)),
               label: '',
-              backgroundColor: Color.fromARGB(255, 177, 128, 144)),
+              backgroundColor: const Color.fromARGB(255, 177, 128, 144)),
           BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month),
-            label: '',
-            backgroundColor: Color.fromARGB(255, 177, 128, 144),
-          ),
+              icon: GestureDetector(
+                  onTap: () {
+                    Get.to(() => const Calendar());
+                  },
+                  child: const Icon(Icons.calendar_month)),
+              label: '',
+              backgroundColor: const Color.fromARGB(255, 177, 128, 144)),
           BottomNavigationBarItem(
-            icon: Icon(Icons.girl_sharp),
-            label: '',
-            backgroundColor: Color.fromARGB(255, 177, 128, 144),
-          ),
+              icon: GestureDetector(
+                  onTap: () {
+                    Get.to(() => const MyHomePage(
+                          title: 'hh',
+                        ));
+                  },
+                  child: const Icon(Icons.girl_sharp)),
+              label: '',
+              backgroundColor: const Color.fromARGB(255, 177, 128, 144)),
           BottomNavigationBarItem(
-            icon: Icon(Icons.auto_graph),
-            label: '',
-            backgroundColor: Color.fromARGB(255, 177, 128, 144),
-          ),
+              icon: GestureDetector(
+                  onTap: () {
+                    Get.to(() => const Stat());
+                  },
+                  child: const Icon(Icons.auto_graph)),
+              label: '',
+              backgroundColor: const Color.fromARGB(255, 177, 128, 144)),
           BottomNavigationBarItem(
-            icon: Icon(Icons.content_copy),
-            label: '',
-            backgroundColor: Colors.green,
-          ),
+              icon: GestureDetector(
+                  onTap: () {
+                    Get.to(() => Content());
+                  },
+                  child: const Icon(Icons.content_copy)),
+              label: '',
+              backgroundColor: const Color.fromARGB(255, 177, 128, 144)),
         ],
       ),
     );

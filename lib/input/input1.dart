@@ -21,8 +21,9 @@ class _PickerState extends State<Picker> {
       firstDate: NepaliDateTime(2078),
       lastDate: NepaliDateTime.now(),
     ).then((value) {
+      NepaliDateTime? updatevalue = NepaliDateTime.tryParse(value.toString());
       setState(() {
-        _dateTime = NepaliDateTime.tryParse(value.toString())!;
+        _dateTime = updatevalue!;
       });
     });
   }
