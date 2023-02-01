@@ -30,6 +30,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      
       debugShowCheckedModeBanner: false,
       // theme: ThemeData(fontFamily: 'Caveat'),
       home: Scaffold(

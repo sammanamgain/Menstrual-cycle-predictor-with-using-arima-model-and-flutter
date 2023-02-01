@@ -3,19 +3,18 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:menstrual_period_tracker/input/age.dart';
 import 'package:menstrual_period_tracker/timerui.dart';
 
 import 'input2.dart';
 
-class Length extends StatefulWidget {
-  const Length({super.key});
+class Age extends StatefulWidget {
+  const Age({super.key});
 
   @override
-  State<Length> createState() => _LengthState();
+  State<Age> createState() => _AgeState();
 }
 
-class _LengthState extends State<Length> {
+class _AgeState extends State<Age> {
   double _currentSliderValue = 1;
 
   @override
@@ -39,14 +38,14 @@ class _LengthState extends State<Length> {
             height: h * 0.2,
           ),
           const Text(
-            "तपाई को महिनावारी को आबधि कति लामो हुन्छ ? ",
+            "तपाई को उमेर कति हो ?  ",
             style: TextStyle(
                 color: Colors.pink, fontSize: 20, fontWeight: FontWeight.bold),
           ),
           Slider(
             value: _currentSliderValue,
-            max: 8,
-            divisions: 10,
+            max: 60,
+            divisions: 60,
             label: _currentSliderValue.round().toString(),
             onChanged: (double value) {
               setState(() {
@@ -64,7 +63,7 @@ class _LengthState extends State<Length> {
           ),
           GestureDetector(
             onTap: () {
-              Get.to(() => const Age());
+              Get.to(() => const MyApps());
             },
             child: Container(
               width: w * 0.5,
