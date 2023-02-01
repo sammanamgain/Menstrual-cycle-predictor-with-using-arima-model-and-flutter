@@ -23,9 +23,9 @@ class _StatState extends State<Stat> {
       darkTheme: ThemeData.dark(),
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.black,
+          backgroundColor: Color.fromARGB(255, 255, 188, 211),
           title: const Text(
-            "statistical analysis",
+            "",
             style: TextStyle(color: Colors.black),
           ),
         ),
@@ -85,11 +85,11 @@ class _StatState extends State<Stat> {
                 ),
               ]),
               SizedBox(
-                height: h * 0.1,
+                height: h * 0.07,
                 width: w,
               ),
               SizedBox(
-                height: h * 0.1,
+                height: h * 0.07,
                 width: w,
                 child: const Center(
                     child: Text(

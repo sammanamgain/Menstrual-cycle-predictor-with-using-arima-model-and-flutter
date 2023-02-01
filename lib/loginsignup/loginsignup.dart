@@ -92,6 +92,7 @@ class _LoginState extends State<Login> {
                           ]),
                       child: TextField(
                         controller: passwordcontroller,
+                        obscureText: true,
                         decoration: InputDecoration(
                             hintText: "पासवोर्ड ",
                             prefixIcon:const Icon(

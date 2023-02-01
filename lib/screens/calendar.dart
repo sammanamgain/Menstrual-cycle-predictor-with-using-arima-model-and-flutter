@@ -28,7 +28,8 @@ class _CalendarState extends State<Calendar> {
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           appBar: AppBar(
-            title: const Text("Calendar"),
+            title: const Text("पात्रो"),
+            backgroundColor: Color.fromARGB(255, 255, 188, 211),
             centerTitle: true,
             actions: [
               IconButton(

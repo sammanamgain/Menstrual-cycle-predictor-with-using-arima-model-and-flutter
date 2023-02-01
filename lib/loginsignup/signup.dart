@@ -19,7 +19,7 @@ class SignUp extends StatelessWidget {
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Container(
               width: w,
-              height: h * 0.3,
+              height: h * 0.5,
               decoration: const BoxDecoration(
                   image: DecorationImage(
                 image: AssetImage("assets/images/signup.png"),

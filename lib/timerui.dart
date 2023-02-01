@@ -20,9 +20,6 @@ class MyApps extends StatelessWidget {
     Get.put(TimerController());
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.indigo,
-        ),
         home: const HomePage());
   }
 }
@@ -43,7 +40,7 @@ class HomePage extends GetView<TimerController> {
               "Timer",
               style: TextStyle(color: Colors.black),
             ))),*/
-      backgroundColor: Color.fromARGB(255, 160, 75, 103),
+      backgroundColor: Color.fromARGB(255, 255, 188, 211),
       body: Column(
         children: [
           SizedBox(
@@ -53,25 +50,32 @@ class HomePage extends GetView<TimerController> {
           Center(
             child: Obx(() => Center(
                   child: CircleAvatar(
-                    backgroundColor: Colors.blueGrey,
-                    radius: 150,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Remaining days",
-                          style: TextStyle(fontSize: 24),
-                        ),
-                        SizedBox(
-                          height: h * 0.03,
-                          width: w,
-                        ),
-                        Text(
-                          '${controller.time.value}',
-                          style: TextStyle(fontSize: 25, color: Colors.white),
-                        ),
-                      ],
-                    ), //Text
+                    backgroundColor: Colors.white,
+                    radius: 155,
+                    child: CircleAvatar(
+                      backgroundColor: Color.fromARGB(255, 193, 192, 192),
+                      radius: 150,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(18,8,8,8),
+                            child: Text(
+                              "महिनावारी आउन बाँकी दिन",
+                              style: TextStyle(fontSize: 32,color: Colors.white),
+                            ),
+                          ),
+                          SizedBox(
+                            height: h * 0.03,
+                            width: w,
+                          ),
+                          Text(
+                            '${controller.time.value}',
+                            style: TextStyle(fontSize: 32, color: Colors.white),
+                          ),
+                        ],
+                      ), //Text
+                    ),
                   ), //CircleAvatar
                 )),
           ),
@@ -92,7 +96,7 @@ class HomePage extends GetView<TimerController> {
             ),
             child: const Center(
               child: Text(
-                "Timer",
+                "टाइमर",
                 style: TextStyle(fontSize: 36, color: Colors.white),
               ),
             ), //one third of HEIGHT of the

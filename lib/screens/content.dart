@@ -40,10 +40,10 @@ class _ContentState extends State<Content> {
         home: Scaffold(
       appBar: AppBar(
           title: const Text(
-            " Content",
+            " सामग्री",
             style: TextStyle(fontSize: 20, color: Colors.black),
           ),
-          backgroundColor: const Color.fromRGBO(255, 255, 255, 1)),
+          backgroundColor: const Color.fromARGB(255, 255, 188, 211)),
       body: ListView(
         scrollDirection: Axis.vertical,
         children: [
