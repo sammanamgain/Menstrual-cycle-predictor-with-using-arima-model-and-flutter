@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:menstrual_period_tracker/auth_controller.dart';
 import 'package:menstrual_period_tracker/input/input3.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class Days extends StatefulWidget {
   const Days({super.key});
@@ -11,6 +13,7 @@ class Days extends StatefulWidget {
 }
 
 class _DaysState extends State<Days> {
+  //final databaseRef = FirebaseDatabase.instance.ref('Post');
   double _currentSliderValue = 1;
 
   @override
@@ -58,6 +61,11 @@ class _DaysState extends State<Days> {
               ),
               GestureDetector(
                 onTap: () {
+                  // databaseRef.child('1').set(
+                  //   {
+                  //     'Days' : 1
+                  //   }
+                  // );
                   Get.to(() => const Length());
                 },
                 child: Container(

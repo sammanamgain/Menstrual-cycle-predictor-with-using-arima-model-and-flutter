@@ -45,7 +45,7 @@ class _LengthState extends State<Length> {
           ),
           Slider(
             value: _currentSliderValue,
-            max: 8,
+            max: 10,
             divisions: 10,
             label: _currentSliderValue.round().toString(),
             onChanged: (double value) {

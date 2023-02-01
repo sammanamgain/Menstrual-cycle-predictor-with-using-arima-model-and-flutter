@@ -44,8 +44,8 @@ class _AgeState extends State<Age> {
           ),
           Slider(
             value: _currentSliderValue,
-            max: 60,
-            divisions: 60,
+            max: 50,
+            divisions: 50,
             label: _currentSliderValue.round().toString(),
             onChanged: (double value) {
               setState(() {
@@ -54,7 +54,7 @@ class _AgeState extends State<Age> {
             },
           ),
           Text(
-            _currentSliderValue.toString(),
+            _currentSliderValue.toInt().toString(),
             style: const TextStyle(color: Colors.pink, fontSize: 20),
           ),
           SizedBox(

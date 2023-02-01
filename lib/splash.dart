@@ -25,7 +25,7 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
 
-    Timer(const Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 0), () {
       Get.to(() => Login());
     });
   }

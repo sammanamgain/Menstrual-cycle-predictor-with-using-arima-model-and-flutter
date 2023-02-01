@@ -30,6 +30,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   nepali_utils: ^3.0.3
+  firebase_database: ^10.0.9
   
 
   get: ^4.6.5

@@ -1,10 +1,11 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 //import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
 import 'package:menstrual_period_tracker/input/input2.dart';
 import 'package:nepali_date_picker/nepali_date_picker.dart';
-
+import 'package:nepali_utils/nepali_utils.dart';
 class Picker extends StatefulWidget {
   const Picker({super.key});
 
@@ -13,6 +14,7 @@ class Picker extends StatefulWidget {
 }
 
 class _PickerState extends State<Picker> {
+
   NepaliDateTime _dateTime = NepaliDateTime.now();
   void _showdatepicker() async {
     await showDatePicker(
@@ -24,6 +26,7 @@ class _PickerState extends State<Picker> {
       NepaliDateTime? updatevalue = NepaliDateTime.tryParse(value.toString());
       setState(() {
         _dateTime = updatevalue!;
+      NepaliUnicode.convert('value');
       });
     });
   }
