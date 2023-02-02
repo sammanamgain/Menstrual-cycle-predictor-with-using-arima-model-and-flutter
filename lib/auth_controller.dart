@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:menstrual_period_tracker/loginsignup/loginsignup.dart';
+import 'package:menstrual_period_tracker/service/database.dart';
 import 'package:menstrual_period_tracker/welcome.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AuthController extends GetxController {
   // you authcontroller chai jata bata ne access huna prayo
@@ -48,8 +50,12 @@ class AuthController extends GetxController {
 //ani automatically welcome page ma janxa
   void register(String email, password) async {
     try {
-      await auth.createUserWithEmailAndPassword(
+      UserCredential result = await auth.createUserWithEmailAndPassword(        //trying to connect with firebase
           email: email, password: password);
+      User ?user = result.user;
+      //carete new document for user with uid
+      await DatabaseService(uid: user?.uid).updateUserData(0, 28, 5, 25);
+
     } catch (e) {
       Get.snackbar("about user", "user message",
           snackPosition: SnackPosition.BOTTOM,

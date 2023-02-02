@@ -31,7 +31,7 @@ environment:
 dependencies:
   nepali_utils: ^3.0.3
   firebase_database: ^10.0.9
-  
+  provider: ^6.0.5
 
   get: ^4.6.5
   get_storage: ^2.0.3 
