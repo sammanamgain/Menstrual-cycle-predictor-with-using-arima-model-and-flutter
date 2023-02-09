@@ -109,7 +109,7 @@ class Welcome extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(() => const Picker());
+                    Get.to(() => Picker(email));
                   },
                   child: Container(
                     width: w * 0.5,

@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:menstrual_period_tracker/timerui.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'input2.dart';
 
 class Age extends StatefulWidget {
-  const Age({super.key});
+  final String? email;
+   Age(this.email);
 
   @override
   State<Age> createState() => _AgeState();
@@ -63,7 +65,8 @@ class _AgeState extends State<Age> {
           ),
           GestureDetector(
             onTap: () {
-              Get.to(() => const MyApps());
+              createUser(_currentSliderValue.toInt(),widget.email);
+              Get.to(() => MyApps(widget.email));
             },
             child: Container(
               width: w * 0.5,
@@ -86,4 +89,15 @@ class _AgeState extends State<Age> {
       ),
     );
   }
+}
+
+Future createUser(int ageValue,String? email) async
+{
+  final docUser = FirebaseFirestore.instance.collection('User Details').doc(email);
+
+  final firstData = 
+  {
+    'Age': ageValue
+  };
+  await docUser.update(firstData);
 }

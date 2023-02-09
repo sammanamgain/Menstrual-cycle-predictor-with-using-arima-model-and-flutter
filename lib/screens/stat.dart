@@ -8,7 +8,8 @@ import 'calendar.dart';
 import 'content.dart';
 
 class Stat extends StatefulWidget {
-  const Stat({super.key});
+final String? email;
+   Stat(this.email);
 
   @override
   State<Stat> createState() => _StatState();
@@ -136,7 +137,7 @@ class _StatState extends State<Stat> {
             BottomNavigationBarItem(
                 icon: GestureDetector(
                     onTap: () {
-                      Get.to(() => const MyApps());  
+                      Get.to(() =>  MyApps(widget.email));  
                     },
                     child: const Icon(Icons.timer)),
                 label: '',
@@ -144,7 +145,7 @@ class _StatState extends State<Stat> {
             BottomNavigationBarItem(
                 icon: GestureDetector(
                     onTap: () {
-                      Get.to(() => const Calendar());
+                      Get.to(() => Calendar(widget.email));
                     },
                     child: const Icon(Icons.calendar_month)),
                 label: '',
@@ -152,9 +153,7 @@ class _StatState extends State<Stat> {
             BottomNavigationBarItem(
                 icon: GestureDetector(
                     onTap: () {
-                      Get.to(() => const MyHomePage(
-                            title: 'hh',
-                          ));
+                      Get.to(() =>  MyHomePage(widget.email));
                     },
                     child: const Icon(Icons.girl_sharp)),
                 label: '',
@@ -162,7 +161,7 @@ class _StatState extends State<Stat> {
             BottomNavigationBarItem(
                 icon: GestureDetector(
                     onTap: () {
-                      Get.to(() => const Stat());
+                      Get.to(() =>  Stat(widget.email));
                     },
                     child: const Icon(Icons.auto_graph)),
                 label: '',
@@ -170,7 +169,7 @@ class _StatState extends State<Stat> {
             BottomNavigationBarItem(
                 icon: GestureDetector(
                     onTap: () {
-                      Get.to(() => const Content());
+                      Get.to(() => Content(widget.email));
                     },
                     child: const Icon(Icons.content_copy)),
                 label: '',

@@ -10,12 +10,12 @@ import 'package:flutter/material.dart' hide CalendarDatePicker;
 import '../timerui.dart';
 //import 'Content.dart';
 
-void main() => runApp(Calendar());
 String period_date = '2079-10-13T18:34:14';
 
 //Calendar
 class Calendar extends StatefulWidget {
-  const Calendar({super.key});
+  final String? email;
+   Calendar(this.email);
 
   @override
   _CalendarState createState() => _CalendarState();
@@ -56,7 +56,7 @@ class _CalendarState extends State<Calendar> {
               BottomNavigationBarItem(
                   icon: GestureDetector(
                       onTap: () {
-                        Get.to(() => const MyApps());
+                        Get.to(() => MyApps(widget.email));
                       },
                       child: const Icon(Icons.timer)),
                   label: '',
@@ -64,7 +64,7 @@ class _CalendarState extends State<Calendar> {
               BottomNavigationBarItem(
                   icon: GestureDetector(
                       onTap: () {
-                        Get.to(() => const Calendar());
+                        Get.to(() =>  Calendar(widget.email));
                       },
                       child: const Icon(Icons.calendar_month)),
                   label: '',
@@ -72,9 +72,7 @@ class _CalendarState extends State<Calendar> {
               BottomNavigationBarItem(
                   icon: GestureDetector(
                       onTap: () {
-                        Get.to(() => const MyHomePage(
-                              title: 'hh',
-                            ));
+                        Get.to(() => MyHomePage(widget.email));
                       },
                       child: const Icon(Icons.girl_sharp)),
                   label: '',
@@ -82,7 +80,7 @@ class _CalendarState extends State<Calendar> {
               BottomNavigationBarItem(
                   icon: GestureDetector(
                       onTap: () {
-                        Get.to(() => const Stat());
+                        Get.to(() => Stat(widget.email));
                       },
                       child: const Icon(Icons.auto_graph)),
                   label: '',
@@ -90,7 +88,7 @@ class _CalendarState extends State<Calendar> {
               BottomNavigationBarItem(
                   icon: GestureDetector(
                       onTap: () {
-                        Get.to(() => const Content());
+                        Get.to(() => Content(widget.email));
                       },
                       child: const Icon(Icons.content_copy)),
                   label: '',

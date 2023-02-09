@@ -7,7 +7,8 @@ import 'package:menstrual_period_tracker/screens/stat.dart';
 import 'package:menstrual_period_tracker/timerui.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  final String? email;
+   MyHomePage(this.email);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -18,7 +19,6 @@ class MyHomePage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -89,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
               icon: GestureDetector(
                   onTap: () {
-                    Get.to(() => const MyApps());
+                    Get.to(() => MyApps(widget.email));
                   },
                   child: const Icon(Icons.timer)),
               label: '',
@@ -97,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
               icon: GestureDetector(
                   onTap: () {
-                    Get.to(() => const Calendar());
+                    Get.to(() => Calendar(widget.email));
                   },
                   child: const Icon(Icons.calendar_month)),
               label: '',
@@ -105,9 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
               icon: GestureDetector(
                   onTap: () {
-                    Get.to(() => const MyHomePage(
-                          title: 'hh',
-                        ));
+                    Get.to(() =>  MyHomePage(widget.email));
                   },
                   child: const Icon(Icons.girl_sharp)),
               label: '',
@@ -115,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
               icon: GestureDetector(
                   onTap: () {
-                    Get.to(() => const Stat());
+                    Get.to(() => Stat(widget.email));
                   },
                   child: const Icon(Icons.auto_graph)),
               label: '',
@@ -123,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
               icon: GestureDetector(
                   onTap: () {
-                    Get.to(() => const Content());
+                    Get.to(() => Content(widget.email));
                   },
                   child: const Icon(Icons.content_copy)),
               label: '',

@@ -5,11 +5,13 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:menstrual_period_tracker/input/age.dart';
 import 'package:menstrual_period_tracker/timerui.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'input2.dart';
 
 class Length extends StatefulWidget {
-  const Length({super.key});
+  final String? email;
+   Length(this.email);
 
   @override
   State<Length> createState() => _LengthState();
@@ -64,7 +66,8 @@ class _LengthState extends State<Length> {
           ),
           GestureDetector(
             onTap: () {
-              Get.to(() => const Age());
+              createUser(_currentSliderValue.toString(),widget.email);
+              Get.to(() => Age(widget.email));
             },
             child: Container(
               width: w * 0.5,
@@ -87,4 +90,15 @@ class _LengthState extends State<Length> {
       ),
     );
   }
+}
+
+Future createUser(String lengthValue,String? email) async
+{
+  final docUser = FirebaseFirestore.instance.collection('User Details').doc(email);
+
+  final firstData = 
+  {
+    'Period Length': lengthValue
+  };
+  await docUser.update(firstData);
 }

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -8,26 +9,18 @@ import 'package:menstrual_period_tracker/screens/calendar.dart';
 import 'package:menstrual_period_tracker/screens/content.dart';
 import 'package:menstrual_period_tracker/screens/stat.dart';
 import 'package:menstrual_period_tracker/symptoms.dart';
-import 'package:menstrual_period_tracker/screens/timer.dart';
 
 import 'loginsignup/signup.dart';
 
-class MyApps extends StatelessWidget {
-  const MyApps({Key? key}) : super(key: key);
+class MyApps extends StatefulWidget {
+  final String? email;
+   MyApps(this.email);
 
   @override
-  Widget build(BuildContext context) {
-    Get.put(TimerController());
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: const HomePage());
-  }
+  State<MyApps> createState() => _MyAppsState();
 }
 
-// Home Page
-class HomePage extends GetView<TimerController> {
-  const HomePage({Key? key}) : super(key: key);
-
+class _MyAppsState extends State<MyApps> {
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -48,36 +41,50 @@ class HomePage extends GetView<TimerController> {
             width: w,
           ),
           Center(
-            child: Obx(() => Center(
+            child: Center(
                   child: CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 155,
                     child: CircleAvatar(
                       backgroundColor: Color.fromARGB(255, 193, 192, 192),
                       radius: 150,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(18,8,8,8),
-                            child: Text(
-                              "महिनावारी आउन बाँकी दिन",
-                              style: TextStyle(fontSize: 32,color: Colors.white),
-                            ),
-                          ),
-                          SizedBox(
-                            height: h * 0.03,
-                            width: w,
-                          ),
-                          Text(
-                            '${controller.time.value}',
-                            style: TextStyle(fontSize: 32, color: Colors.white),
-                          ),
-                        ],
+                      child: FutureBuilder<User?>(
+                        future: readUser(widget.email),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData){
+                            final user = snapshot.data!;
+                            return Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                               Padding(
+                                padding: const EdgeInsets.fromLTRB(18,8,8,8),
+                                child: Text(
+                                  "महिनावारी आउन बाँकी दिन",
+                                  style: TextStyle(fontSize: 32,color: Colors.white),
+                                ),
+                              ),
+                              SizedBox(
+                                height: h * 0.03,
+                                width: w,
+                              ),
+                              Text(
+                                '${user.cycleLength}',
+                                style: TextStyle(fontSize: 32, color: Colors.white),
+                              ),
+                            ],
+                          );
+                          }
+                          else
+                        {
+                          return Text('Something is wrong');
+                        }
+                          
+                        }
+                        
                       ), //Text
                     ),
                   ), //CircleAvatar
-                )),
+                ),
           ),
           SizedBox(
             height: h * 0.05,
@@ -108,7 +115,7 @@ class HomePage extends GetView<TimerController> {
           BottomNavigationBarItem(
               icon: GestureDetector(
                   onTap: () {
-                    Get.to(() => const MyApps());
+                    Get.to(() => MyApps(widget.email));
                   },
                   child: const Icon(Icons.timer)),
               label: '',
@@ -116,7 +123,7 @@ class HomePage extends GetView<TimerController> {
           BottomNavigationBarItem(
               icon: GestureDetector(
                   onTap: () {
-                    Get.to(() => const Calendar());
+                    Get.to(() =>  Calendar(widget.email));
                   },
                   child: const Icon(Icons.calendar_month)),
               label: '',
@@ -124,8 +131,8 @@ class HomePage extends GetView<TimerController> {
           BottomNavigationBarItem(
               icon: GestureDetector(
                   onTap: () {
-                    Get.to(() => const MyHomePage(
-                          title: 'hh',
+                    Get.to(() => MyHomePage(
+                          widget.email
                         ));
                   },
                   child: const Icon(Icons.girl_sharp)),
@@ -134,7 +141,7 @@ class HomePage extends GetView<TimerController> {
           BottomNavigationBarItem(
               icon: GestureDetector(
                   onTap: () {
-                    Get.to(() => const Stat());
+                    Get.to(() =>  Stat(widget.email));
                   },
                   child: const Icon(Icons.auto_graph)),
               label: '',
@@ -142,7 +149,7 @@ class HomePage extends GetView<TimerController> {
           BottomNavigationBarItem(
               icon: GestureDetector(
                   onTap: () {
-                    Get.to(() => Content());
+                    Get.to(() => Content(widget.email));
                   },
                   child: const Icon(Icons.content_copy)),
               label: '',
@@ -152,3 +159,61 @@ class HomePage extends GetView<TimerController> {
     );
   }
 }
+
+
+class User{
+  String? periodDate;
+  String? cycleLength;
+  String? periodLength;
+  int? age;
+
+  User({
+    this.periodDate,
+    this.cycleLength,
+    this.periodLength,
+    this.age,
+
+  });
+
+  Map<String, dynamic> toDetails() {
+    return {
+      'Age': age,
+      'Cycle Length': cycleLength,
+      'Period Date': periodDate,
+      'Period Length': periodLength,
+    };
+  }
+ 
+  static User fromDatabase(Map<String, dynamic> details) {
+    
+    return User(
+      age: details['Age'],
+      cycleLength: details['Cycle Length'],
+      periodDate: details['Period Date'],
+      periodLength: details['Period Length']
+    );
+  }
+}
+
+ Stream<List<User>> readUsers() => FirebaseFirestore
+ .instance
+ .collection('User Details')
+ .snapshots()
+ .map((snapshot) => snapshot.docs.map((doc) => User.fromDatabase(doc.data())).toList());
+
+Future<User?> readUser(String? email) async{
+  final docUser = FirebaseFirestore.instance.collection('User Details').doc(email);
+  final snapshot = await docUser.get();
+
+  if (snapshot.exists){
+    return User.fromDatabase(snapshot.data()!);
+  }
+}
+
+
+
+
+
+
+
+

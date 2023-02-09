@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,7 +8,8 @@ import 'package:menstrual_period_tracker/input/input2.dart';
 import 'package:nepali_date_picker/nepali_date_picker.dart';
 import 'package:nepali_utils/nepali_utils.dart';
 class Picker extends StatefulWidget {
-  const Picker({super.key});
+  final String? email;
+   Picker(this.email);
 
   @override
   State<Picker> createState() => _PickerState();
@@ -88,7 +90,8 @@ class _PickerState extends State<Picker> {
               ),
               GestureDetector(
                 onTap: () {
-                  Get.to(() => const Days());
+                  createUser(formatted.toString(),widget.email);
+                  Get.to(() => Days(widget.email));
                 },
                 child: Container(
                   width: w * 0.5,
@@ -112,4 +115,17 @@ class _PickerState extends State<Picker> {
           // ignore: prefer_const_literals_to_create_immutables
         ));
   }
+
+}
+
+
+Future createUser(String dateValue,String? email) async
+{
+  final docUser = FirebaseFirestore.instance.collection('User Details').doc(email);
+
+  final firstData = 
+  {
+    'Period Date': dateValue
+  };
+  await docUser.set(firstData);
 }
