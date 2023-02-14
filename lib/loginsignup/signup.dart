@@ -22,7 +22,7 @@ class SignUp extends StatelessWidget {
               height: h * 0.5,
               decoration: const BoxDecoration(
                   image: DecorationImage(
-                image: AssetImage("assets/images/signup.png"),
+                image: AssetImage("assets/images/bb.png"),
                 fit: BoxFit.cover,
               )),
               child: Column(children: [
@@ -125,7 +125,7 @@ class SignUp extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
                         image: const DecorationImage(
-                          image: AssetImage("assets/images/loginbtn.png"),
+                          image: AssetImage("assets/images/bb.png"),
                           fit: BoxFit.cover,
                         )),
                     child: const Center(

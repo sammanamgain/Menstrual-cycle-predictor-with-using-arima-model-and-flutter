@@ -14,7 +14,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //firebase bata aaune controller lai wait garxa binding hune bela samma
   //tala ko line le chai auth controlle  lai jata bata ne access garna dinxa
-  await Firebase.initializeApp().then((value) => Get.put(AuthController()));
+  await Firebase.initializeApp();
   runApp(
       const GetMaterialApp(debugShowCheckedModeBanner: false, home: Splash()));
 }
@@ -30,7 +30,6 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      
       debugShowCheckedModeBanner: false,
       // theme: ThemeData(fontFamily: 'Caveat'),
       home: Scaffold(
