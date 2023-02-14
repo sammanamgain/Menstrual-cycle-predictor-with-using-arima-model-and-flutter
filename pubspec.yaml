@@ -37,6 +37,7 @@ dependencies:
   get_storage: ^2.0.3 
   flutter:
     sdk: flutter
+  image_picker: ^0.8.4+4 
   syncfusion_flutter_charts: ^20.3.56
  
   d_chart: ^0.1.0

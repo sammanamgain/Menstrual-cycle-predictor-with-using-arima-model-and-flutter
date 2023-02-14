@@ -14,7 +14,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //firebase bata aaune controller lai wait garxa binding hune bela samma
   //tala ko line le chai auth controlle  lai jata bata ne access garna dinxa
-  await Firebase.initializeApp();
+  await Firebase.initializeApp().then((value) => Get.put(AuthController()));
   runApp(
       const GetMaterialApp(debugShowCheckedModeBanner: false, home: Splash()));
 }

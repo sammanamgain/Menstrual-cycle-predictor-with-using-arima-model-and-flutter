@@ -9,7 +9,6 @@ class SignUp extends StatelessWidget {
     var emailcontroller = TextEditingController();
     var passwordcontroller = TextEditingController();
 
-    List images = ["g.png", "t.png", "f.png"];
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -32,7 +31,7 @@ class SignUp extends StatelessWidget {
                 const CircleAvatar(
                   backgroundColor: Colors.white70,
                   radius: 60,
-                  backgroundImage: AssetImage("assets/images/profile.png"),
+                  backgroundImage: AssetImage("assets/images/gurl.png"),
                 )
               ]), //one third of HEIGHT of the
             ),
@@ -63,7 +62,7 @@ class SignUp extends StatelessWidget {
                             hintText: "तपाई को इमेल आईडी ",
                             prefixIcon: const Icon(
                               Icons.email,
-                              color: Colors.deepOrangeAccent,
+                              color: Color.fromARGB(255, 126, 37, 158),
                             ),
                             focusedBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.white24)),
@@ -92,7 +91,7 @@ class SignUp extends StatelessWidget {
                             hintText: "पासवोर्ड ",
                             prefixIcon: const Icon(
                               Icons.password,
-                              color: Colors.deepOrangeAccent,
+                              color: Color.fromARGB(255, 129, 42, 166),
                             ),
                             focusedBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.white24)),
@@ -120,8 +119,8 @@ class SignUp extends StatelessWidget {
                   onTap: () => AuthController.instance
                       .register(emailcontroller.text, passwordcontroller.text),
                   child: Container(
-                    width: w * 0.5,
-                    height: h * 0.08,
+                    width: w * 0.4,
+                    height: h * 0.06,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
                         image: const DecorationImage(
@@ -131,7 +130,7 @@ class SignUp extends StatelessWidget {
                     child: const Center(
                       child: Text(
                         "दर्ता गर्नुहोस ",
-                        style: TextStyle(fontSize: 32, color: Colors.white),
+                        style: TextStyle(fontSize: 30, color: Colors.white),
                       ),
                     ), //one third of HEIGHT of the
                   ),
@@ -142,38 +141,6 @@ class SignUp extends StatelessWidget {
               height: h * 0.07,
               width: w,
             ),
-            Row(
-              children: [
-                SizedBox(
-                  width: w * 0.10,
-                ),
-                RichText(
-                  text: TextSpan(
-                    text: "अथवा तल का प्रक्रिया मार्फत साइन गर्नुहोस ",
-                    style: TextStyle(color: Colors.grey[500], fontSize: 20),
-                  ),
-                ),
-              ],
-            ),
-            Center(
-              child: Wrap(
-                children: List<Widget>.generate(
-                    3,
-                    (index) => Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: CircleAvatar(
-                            radius: 30,
-                            backgroundColor: Colors.grey[500],
-                            child: CircleAvatar(
-                              radius: 25,
-                              backgroundImage:
-                                  // ignore: prefer_interpolation_to_compose_strings
-                                  AssetImage("assets/images/" + images[index]),
-                            ),
-                          ),
-                        )),
-              ),
-            )
           ]),
         ));
   }
