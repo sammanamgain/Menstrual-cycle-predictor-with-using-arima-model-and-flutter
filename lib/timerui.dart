@@ -10,6 +10,10 @@ import 'package:menstrual_period_tracker/screens/content.dart';
 import 'package:menstrual_period_tracker/screens/stat.dart';
 import 'package:menstrual_period_tracker/symptoms.dart';
 
+import 'package:nepali_date_picker/nepali_date_picker.dart';
+import 'package:nepali_utils/nepali_utils.dart';
+
+
 import 'loginsignup/signup.dart';
 
 class MyApps extends StatefulWidget {
@@ -21,6 +25,26 @@ class MyApps extends StatefulWidget {
 }
 
 class _MyAppsState extends State<MyApps> {
+
+  NepaliDateTime _dateTime = NepaliDateTime.now();
+  void _showdatepicker() async {
+  await showDatePicker(
+    context: context,
+    initialDate: NepaliDateTime.now(),
+    firstDate: NepaliDateTime(2078),
+    lastDate: NepaliDateTime.now(),
+  ).then((value) {
+    if (value == null) {
+      print('Date picker was cancelled');
+      return;
+    }
+    NepaliDateTime? updatevalue = NepaliDateTime.tryParse(value.toString());
+    setState(() {
+      _dateTime = updatevalue!;
+    NepaliUnicode.convert('value');
+    });
+  });
+}
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -37,7 +61,7 @@ class _MyAppsState extends State<MyApps> {
       body: Column(
         children: [
           SizedBox(
-            height: h * 0.3,
+            height: h * 0.25,
             width: w,
           ),
           Center(
@@ -87,27 +111,31 @@ class _MyAppsState extends State<MyApps> {
                 ),
           ),
           SizedBox(
-            height: h * 0.05,
+            height: h * 0.06,
             width: w,
           ),
           Container(
             width: w * 0.5,
-            height: h * 0.08,
+            height: h * 0.054,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(30),
+            color: Colors.blue
 
               /*image: const DecorationImage(
                     image: AssetImage("assets/images/loginbtn.png"),
                     fit: BoxFit.cover,
                   )*/
             ),
+            child:ElevatedButton(
+              onPressed: _showdatepicker,
             child: const Center(
               child: Text(
                 "टाइमर",
-                style: TextStyle(fontSize: 36, color: Colors.white),
+                style: TextStyle(fontSize: 35, color: Colors.white),
               ),
             ), //one third of HEIGHT of the
           ),
+          )
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

@@ -19,19 +19,23 @@ class _PickerState extends State<Picker> {
 
   NepaliDateTime _dateTime = NepaliDateTime.now();
   void _showdatepicker() async {
-    await showDatePicker(
-      context: context,
-      initialDate: NepaliDateTime.now(),
-      firstDate: NepaliDateTime(2078),
-      lastDate: NepaliDateTime.now(),
-    ).then((value) {
-      NepaliDateTime? updatevalue = NepaliDateTime.tryParse(value.toString());
-      setState(() {
-        _dateTime = updatevalue!;
-      NepaliUnicode.convert('value');
-      });
+  await showDatePicker(
+    context: context,
+    initialDate: NepaliDateTime.now(),
+    firstDate: NepaliDateTime(2078),
+    lastDate: NepaliDateTime.now(),
+  ).then((value) {
+    if (value == null) {
+      print('Date picker was cancelled');
+      return;
+    }
+    NepaliDateTime? updatevalue = NepaliDateTime.tryParse(value.toString());
+    setState(() {
+      _dateTime = updatevalue!;
+    NepaliUnicode.convert('value');
     });
-  }
+  });
+}
 
   String formatDate(DateTime dateTime) => DateFormat("MMMM d").format(dateTime);
   @override
