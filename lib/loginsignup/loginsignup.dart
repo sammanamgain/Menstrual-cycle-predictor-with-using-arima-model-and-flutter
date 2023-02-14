@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'signup.dart';
 import '../auth_controller.dart';
@@ -45,17 +46,23 @@ class _LoginState extends State<Login> {
                 width: w,
                 child: Column(
                   children: [
-                    const Text(
+                    Text(
                       "नमस्ते",
-                      style:
-                          TextStyle(fontSize: 70, fontWeight: FontWeight.bold),
+                      style: GoogleFonts.getFont(
+                        'Khand',
+                        fontSize: 37,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 61, 6, 91),
+                      ),
                     ),
-                    const Text(
+                    Text(
                       "आफ्नो खाता मा साइन गर्नु होस् ",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          color: Color.fromARGB(255, 9, 9, 9)),
+                      style: GoogleFonts.getFont(
+                        'Khand',
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 11, 11, 11),
+                      ),
                     ),
                     SizedBox(
                       height: h * 0.07,
@@ -181,19 +188,22 @@ class _LoginState extends State<Login> {
                   child: RichText(
                     text: TextSpan(
                       text: "तपाई संग खाता छैन ? ",
-                      style: const TextStyle(
-                        color: Color.fromARGB(255, 15, 14, 14),
+                      style: GoogleFonts.getFont(
+                        'Khand',
                         fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 4, 4, 4),
                       ),
                       children: [
                         TextSpan(
                           recognizer: TapGestureRecognizer()
                             ..onTap = () => Get.to(() => const SignUp()),
                           text: "खोल्नुहोस ",
-                          style: const TextStyle(
-                            color: Colors.black,
+                          style: GoogleFonts.getFont(
+                            'Khand',
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 4, 4, 4),
                           ),
                         )
                       ],

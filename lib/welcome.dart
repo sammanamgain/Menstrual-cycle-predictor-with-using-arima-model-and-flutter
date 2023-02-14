@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 //import 'package:menstrual_period_tracker/auth_controller.dart';
 import 'package:menstrual_period_tracker/input/input1.dart';
 import 'package:menstrual_period_tracker/loginsignup/loginsignup.dart';
@@ -17,13 +18,14 @@ class Welcome extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Container(
               width: w,
               height: h * 0.4,
               decoration: const BoxDecoration(
                   image: DecorationImage(
-                image: AssetImage("assets/images/signup.png"),
+                image: AssetImage("assets/images/bb.png"),
                 fit: BoxFit.cover,
               )),
               child: Column(children: [
@@ -32,8 +34,8 @@ class Welcome extends StatelessWidget {
                 ),
                 const CircleAvatar(
                   backgroundColor: Colors.white70,
-                  radius: 60,
-                  backgroundImage: AssetImage("assets/images/profile.png"),
+                  radius: 90,
+                  backgroundImage: AssetImage("assets/images/gurl.png"),
                 )
               ]), //one third of HEIGHT of the
             ),
@@ -83,97 +85,90 @@ class Welcome extends StatelessWidget {
               height: h * 0.07,
               width: w,
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(left: 50),
               child: Text(
-                "हाम्रो अप्प्लिकेशन मा स्वागत छ ",
-                style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                'हाम्रो अप्प्लिकेशन मा स्वागत छ ',
+                style: GoogleFonts.getFont(
+                  'Khand',
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 5, 5, 5),
+                ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 50),
               child: Text(
                 email ?? "loading",
-                style: const TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
               ),
             ),
             SizedBox(
               height: h * 0.07,
               width: w,
             ),
-            Row(
-              children: [
-                SizedBox(
-                  height: h * 0.08,
-                  width: w * 0.25,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Get.to(() => Picker(email));
-                  },
-                  child: Container(
-                    width: w * 0.5,
-                    height: h * 0.08,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        image: const DecorationImage(
-                          image: AssetImage("assets/images/loginbtn.png"),
-                          fit: BoxFit.cover,
-                        )),
-                    child: const Center(
-                      child: Text(
-                        "अर्को ",
-                        style: TextStyle(fontSize: 32, color: Colors.white),
+            Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(() => Picker(email));
+                      },
+                      child: Container(
+                        width: w * 0.4,
+                        height: h * 0.06,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            image: const DecorationImage(
+                              image: AssetImage("assets/images/bb.png"),
+                              fit: BoxFit.cover,
+                            )),
+                        child: Center(
+                          child: Text(
+                            "अर्को",
+                            style: GoogleFonts.getFont(
+                              'Khand',
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 251, 248, 248),
+                            ),
+                          ),
+                        ),
                       ),
-                    ), //one third of HEIGHT of the
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: h * 0.07,
-              width: w,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  height: h * 0.08,
-                  width: w * 0.25,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Get.to(() => const Login());
-                  },
-                  child: Container(
-                    width: w * 0.5,
-                    height: h * 0.08,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        image: const DecorationImage(
-                          image: AssetImage("assets/images/loginbtn.png"),
-                          fit: BoxFit.cover,
-                        )),
-                    child: const Center(
-                      child: Text(
-                        "साइन आउट",
-                        style: TextStyle(fontSize: 32, color: Colors.white),
+                    ),
+                    const Spacer(),
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(() => const Login());
+                      },
+                      child: Container(
+                        width: w * 0.4,
+                        height: h * 0.06,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            image: const DecorationImage(
+                              image: AssetImage("assets/images/bb.png"),
+                              fit: BoxFit.cover,
+                            )),
+                        child: Center(
+                          child: Text(
+                            "साइन आउट",
+                            style: GoogleFonts.getFont(
+                              'Khand',
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 242, 241, 241),
+                            ),
+                          ),
+                        ),
                       ),
-                    ), //one third of HEIGHT of the
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: h * 0.07,
-              width: w,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: w * 0.10,
-                ),
-              ],
-            ),
+                    ),
+                  ],
+                ))
           ]),
         ));
   }

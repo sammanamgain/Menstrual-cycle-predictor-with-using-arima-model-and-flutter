@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:menstrual_period_tracker/auth_controller.dart';
 
 class SignUp extends StatelessWidget {
@@ -127,10 +128,15 @@ class SignUp extends StatelessWidget {
                           image: AssetImage("assets/images/bb.png"),
                           fit: BoxFit.cover,
                         )),
-                    child: const Center(
+                    child: Center(
                       child: Text(
                         "दर्ता गर्नुहोस ",
-                        style: TextStyle(fontSize: 30, color: Colors.white),
+                        style: GoogleFonts.getFont(
+                          'Khand',
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 246, 244, 244),
+                        ),
                       ),
                     ), //one third of HEIGHT of the
                   ),
