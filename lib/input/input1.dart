@@ -98,10 +98,17 @@ class _PickerState extends State<Picker> {
                       ),
                     ),
                     ElevatedButton(
-                      style: ElevatedButton.styleFrom(primary: Colors.black),
+                      style: ElevatedButton.styleFrom(
+                        primary: Color.fromARGB(255, 55, 0, 63),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50),
+                          side:
+                              const BorderSide(color: Colors.white, width: 10),
+                        ),
+                      ),
                       onPressed: _showdatepicker,
                       child: Padding(
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         child: Container(
                           width: w * 0.4,
                           height: h * 0.06,
@@ -113,7 +120,7 @@ class _PickerState extends State<Picker> {
                               )),
                           child: Center(
                             child: Text(
-                              "'मिति छान्नुहोस ' ",
+                              "मिति छान्नुहोस ",
                               style: GoogleFonts.getFont(
                                 'Khand',
                                 fontSize: 30,
@@ -128,13 +135,6 @@ class _PickerState extends State<Picker> {
                     SizedBox(
                       height: h * 0.05,
                       width: w,
-                    ),
-                    Text(
-                      formatted.toString(),
-                      style: const TextStyle(
-                          color: Color.fromARGB(255, 71, 24, 159),
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold),
                     ),
                     GestureDetector(
                       onTap: () {
