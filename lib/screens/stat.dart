@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../symptoms.dart';
 import '../timerui.dart';
@@ -8,8 +9,8 @@ import 'calendar.dart';
 import 'content.dart';
 
 class Stat extends StatefulWidget {
-final String? email;
-   Stat(this.email);
+  final String? email;
+  Stat(this.email);
 
   @override
   State<Stat> createState() => _StatState();
@@ -24,11 +25,19 @@ class _StatState extends State<Stat> {
       darkTheme: ThemeData.dark(),
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 255, 188, 211),
-          title: const Text(
-            "",
-            style: TextStyle(color: Colors.black),
+          title: Text(
+            "सांख्यिकी",
+            style: GoogleFonts.getFont(
+              'Khand',
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+              color: const Color.fromARGB(255, 253, 250, 250),
+            ),
           ),
+          backgroundColor: const Color.fromARGB(255, 66, 13, 106),
+          toolbarHeight: 80,
+          centerTitle: true,
+          automaticallyImplyLeading: false,
         ),
         body: ListView(children: [
           Column(
@@ -38,20 +47,30 @@ class _StatState extends State<Stat> {
                 child: SizedBox(
                   height: h * 0.1,
                   width: w,
-                  child: const Center(
+                  child: Center(
                       child: Text(
                     "तपाइको तथ्याङ्क",
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: GoogleFonts.getFont(
+                      'Khand',
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 5, 5, 5),
+                    ),
                   )),
                 ),
               ),
               SizedBox(
                 height: h * 0.1,
                 width: w,
-                child: const Center(
+                child: Center(
                     child: Text(
                   "तपाइको औसत महिनावारी  चक्र",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: GoogleFonts.getFont(
+                    'Khand',
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 5, 5, 5),
+                  ),
                 )),
               ),
               Stack(children: [
@@ -70,7 +89,7 @@ class _StatState extends State<Stat> {
                   padding: const EdgeInsets.only(top: 70),
                   child: Center(
                       child: Column(
-                    children: const [
+                    children: [
                       Text(
                         " 24",
                         style: TextStyle(
@@ -78,8 +97,12 @@ class _StatState extends State<Stat> {
                       ),
                       Text(
                         "दिनहरू",
-                        style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
+                        style: GoogleFonts.getFont(
+                          'Khand',
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 5, 5, 5),
+                        ),
                       ),
                     ],
                   )),
@@ -92,10 +115,15 @@ class _StatState extends State<Stat> {
               SizedBox(
                 height: h * 0.07,
                 width: w,
-                child: const Center(
+                child: Center(
                     child: Text(
                   "तपाइको औसत महिनावारी  अवधि",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: GoogleFonts.getFont(
+                    'Khand',
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 5, 5, 5),
+                  ),
                 )),
               ),
               Stack(children: [
@@ -114,7 +142,8 @@ class _StatState extends State<Stat> {
                   padding: const EdgeInsets.only(top: 70),
                   child: Center(
                       child: Column(
-                    children: const [
+                    children: [
+                      // ignore: prefer_const_constructors
                       Text(
                         " 4",
                         style: TextStyle(
@@ -122,8 +151,12 @@ class _StatState extends State<Stat> {
                       ),
                       Text(
                         " दिनहरू",
-                        style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
+                        style: GoogleFonts.getFont(
+                          'Khand',
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 5, 5, 5),
+                        ),
                       ),
                     ],
                   )),
@@ -133,47 +166,64 @@ class _StatState extends State<Stat> {
           ),
         ]),
         bottomNavigationBar: BottomNavigationBar(
+          currentIndex: 3,
+          backgroundColor:
+              Color.fromARGB(255, 66, 13, 106), // set background color
+          type: BottomNavigationBarType.fixed, // set type to fixed
+          selectedItemColor: Colors.white, // set selected item color
+          unselectedItemColor: Colors.grey[400], // set unselected item color
+          iconSize: 30, // set icon sizeincrease the size of the icons
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-                icon: GestureDetector(
-                    onTap: () {
-                      Get.to(() =>  MyApps(widget.email));  
-                    },
-                    child: const Icon(Icons.timer)),
-                label: '',
-                backgroundColor: const Color.fromARGB(255, 177, 128, 144)),
+              icon: GestureDetector(
+                onTap: () {
+                  Get.to(() => MyApps(widget.email));
+                },
+                child: const Icon(Icons.timer),
+              ),
+              label: '',
+              backgroundColor: const Color.fromARGB(255, 66, 13, 106),
+            ),
             BottomNavigationBarItem(
-                icon: GestureDetector(
-                    onTap: () {
-                      Get.to(() => Calendar(widget.email));
-                    },
-                    child: const Icon(Icons.calendar_month)),
-                label: '',
-                backgroundColor: const Color.fromARGB(255, 177, 128, 144)),
+              icon: GestureDetector(
+                onTap: () {
+                  Get.to(() => Calendar(widget.email));
+                },
+                child: const Icon(Icons.calendar_month),
+              ),
+              label: '',
+              backgroundColor: const Color.fromARGB(255, 66, 13, 106),
+            ),
             BottomNavigationBarItem(
-                icon: GestureDetector(
-                    onTap: () {
-                      Get.to(() =>  MyHomePage(widget.email));
-                    },
-                    child: const Icon(Icons.girl_sharp)),
-                label: '',
-                backgroundColor: const Color.fromARGB(255, 177, 128, 144)),
+              icon: GestureDetector(
+                onTap: () {
+                  Get.to(() => MyHomePage(widget.email));
+                },
+                child: const Icon(Icons.girl_sharp),
+              ),
+              label: '',
+              backgroundColor: const Color.fromARGB(255, 66, 13, 106),
+            ),
             BottomNavigationBarItem(
-                icon: GestureDetector(
-                    onTap: () {
-                      Get.to(() =>  Stat(widget.email));
-                    },
-                    child: const Icon(Icons.auto_graph)),
-                label: '',
-                backgroundColor: const Color.fromARGB(255, 177, 128, 144)),
+              icon: GestureDetector(
+                onTap: () {
+                  Get.to(() => Stat(widget.email));
+                },
+                child: const Icon(Icons.auto_graph),
+              ),
+              label: '',
+              backgroundColor: const Color.fromARGB(255, 66, 13, 106),
+            ),
             BottomNavigationBarItem(
-                icon: GestureDetector(
-                    onTap: () {
-                      Get.to(() => Content(widget.email));
-                    },
-                    child: const Icon(Icons.content_copy)),
-                label: '',
-                backgroundColor: const Color.fromARGB(255, 177, 128, 144)),
+              icon: GestureDetector(
+                onTap: () {
+                  Get.to(() => Content(widget.email));
+                },
+                child: const Icon(Icons.content_copy),
+              ),
+              label: '',
+              backgroundColor: const Color.fromARGB(255, 66, 13, 106),
+            ),
           ],
         ),
       ),

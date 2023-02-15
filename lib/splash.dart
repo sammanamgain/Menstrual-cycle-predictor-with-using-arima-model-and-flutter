@@ -15,7 +15,7 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 10000), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(_scaffoldKey.currentContext!,
           MaterialPageRoute(builder: (context) => const Login()));
     });

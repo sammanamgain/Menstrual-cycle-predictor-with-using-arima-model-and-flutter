@@ -13,13 +13,33 @@ class SignUp extends StatelessWidget {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor:
+              Color.fromARGB(255, 75, 10, 116), // set your desired color here
+          title: Text(
+            'दर्ता गर्नु',
+            style: GoogleFonts.getFont(
+              'Khand',
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 248, 245, 245),
+            ),
+          ),
+          centerTitle: true,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Container(
               width: w,
-              height: h * 0.5,
+              height: h * 0.4,
               decoration: const BoxDecoration(
                   image: DecorationImage(
                 image: AssetImage("assets/images/bb.png"),
@@ -27,11 +47,11 @@ class SignUp extends StatelessWidget {
               )),
               child: Column(children: [
                 SizedBox(
-                  height: h * 0.15,
+                  height: h * 0.10,
                 ),
                 const CircleAvatar(
                   backgroundColor: Colors.white70,
-                  radius: 60,
+                  radius: 90,
                   backgroundImage: AssetImage("assets/images/gurl.png"),
                 )
               ]), //one third of HEIGHT of the

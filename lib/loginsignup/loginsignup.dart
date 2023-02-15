@@ -164,10 +164,15 @@ class _LoginState extends State<Login> {
                           image: AssetImage("assets/images/bb.png"),
                           fit: BoxFit.cover,
                         )),
-                    child: const Center(
+                    child: Center(
                       child: Text(
                         "साइन गर ",
-                        style: TextStyle(fontSize: 30, color: Colors.white),
+                        style: GoogleFonts.getFont(
+                          'Khand',
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 246, 244, 244),
+                        ),
                       ),
                     ), //one third of HEIGHT of the
                   ),
