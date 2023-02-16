@@ -5,7 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:menstrual_period_tracker/screens/stat.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../contents/content_one.dart';
-
+import '../contents/content_two.dart';
+import '../contents/content_three.dart';
+import '../contents/content_four.dart';
+import '../contents/content_five.dart';
 import '../symptoms.dart';
 import '../timerui.dart';
 import 'calendar.dart';
@@ -54,30 +57,46 @@ class _ContentState extends State<Content> {
             },
             child: Card(
               elevation: 5,
-              child: Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    scale: 1,
-                    image: AssetImage("assets/images/c1.jpg"),
-                    fit: BoxFit.cover,
-                    alignment: Alignment.topCenter,
+              child: Stack(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      image: DecorationImage(
+                        scale: 1,
+                        image: AssetImage("assets/images/c1.jpg"),
+                        fit: BoxFit.cover,
+                        alignment: Alignment.topCenter,
+                      ),
+                    ),
+                    height: h * 0.3,
+                    width: w,
                   ),
-                ),
-                //   color: Colors.pink[50],
-                height: h * 0.3,
-                width: w,
-                child: const Padding(
-                  padding: EdgeInsets.only(top: 200, left: 80),
-                  child: Text(
-                    "Your Menstural Cycle ",
-                    style: TextStyle(
-                        fontSize: 32,
-                        color: Colors.black,
-                        height: 2,
-                        decorationThickness: 1.5,
-                        fontStyle: FontStyle.italic),
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 17, 17, 17),
+                        borderRadius:
+                            BorderRadius.vertical(bottom: Radius.circular(16)),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "माहिनावरी का वास्तविकताहरु ",
+                          style: GoogleFonts.getFont(
+                            'Khand',
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 243, 239, 239),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
           ),
@@ -85,36 +104,51 @@ class _ContentState extends State<Content> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Content1(widget.email)),
+                MaterialPageRoute(builder: (context) => Content2(widget.email)),
               );
             },
             child: Card(
               elevation: 5,
-              child: Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    scale: 1,
-                    image: AssetImage("assets/images/youn.jpg"),
-                    fit: BoxFit.cover,
-                    alignment: Alignment.topCenter,
+              child: Stack(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      image: DecorationImage(
+                        scale: 1,
+                        image: AssetImage("assets/images/youn.jpg"),
+                        fit: BoxFit.cover,
+                        alignment: Alignment.topCenter,
+                      ),
+                    ),
+                    height: h * 0.3,
+                    width: w,
                   ),
-                ),
-
-                // color: Colors.pink[50],
-                height: h * 0.3,
-                width: w,
-                child: const Padding(
-                  padding: EdgeInsets.only(top: 180),
-                  child: Text(
-                    "महिनावारी रोकियो ? अरु कारण पनि हुन सक्छन् ",
-                    style: TextStyle(
-                        fontSize: 28,
-                        color: Colors.black,
-                        height: 2,
-                        decorationThickness: 1.5,
-                        fontStyle: FontStyle.italic),
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      height: 60,
+                      decoration: const BoxDecoration(
+                        color: Color.fromARGB(255, 15, 15, 15),
+                        borderRadius:
+                            BorderRadius.vertical(bottom: Radius.circular(16)),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "महिनावारी रोकियो ? अरु कारण  ",
+                          style: GoogleFonts.getFont(
+                            'Khand',
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 253, 250, 250),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
           ),
@@ -122,36 +156,51 @@ class _ContentState extends State<Content> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Content1(widget.email)),
+                MaterialPageRoute(builder: (context) => Content3(widget.email)),
               );
             },
             child: Card(
               elevation: 5,
-              child: Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    scale: 1,
-                    image: AssetImage("assets/images/period.jpg"),
-                    fit: BoxFit.cover,
-                    alignment: Alignment.topCenter,
+              child: Stack(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      image: DecorationImage(
+                        scale: 1,
+                        image: AssetImage("assets/images/period.jpg"),
+                        fit: BoxFit.cover,
+                        alignment: Alignment.topCenter,
+                      ),
+                    ),
+                    height: h * 0.3,
+                    width: w,
                   ),
-                ),
-
-                // color: Colors.pink[50],
-                height: h * 0.3,
-                width: w,
-                child: const Padding(
-                  padding: EdgeInsets.only(top: 180),
-                  child: Text(
-                    "महिनावरी सम्बन्धी केही भ्रम र वास्तविकता ",
-                    style: TextStyle(
-                        fontSize: 28,
-                        color: Colors.black,
-                        height: 2,
-                        decorationThickness: 1.5,
-                        fontStyle: FontStyle.italic),
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 19, 19, 19),
+                        borderRadius:
+                            BorderRadius.vertical(bottom: Radius.circular(16)),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "What is menstruation? ",
+                          style: GoogleFonts.getFont(
+                            'Khand',
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 253, 250, 250),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
           ),
@@ -159,36 +208,51 @@ class _ContentState extends State<Content> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Content1(widget.email)),
+                MaterialPageRoute(builder: (context) => Content4(widget.email)),
               );
             },
             child: Card(
               elevation: 5,
-              child: Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    scale: 1,
-                    image: AssetImage("assets/images/youn.jpg"),
-                    fit: BoxFit.cover,
-                    alignment: Alignment.topCenter,
+              child: Stack(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      image: DecorationImage(
+                        scale: 1,
+                        image: AssetImage("assets/images/edu.jpg"),
+                        fit: BoxFit.cover,
+                        alignment: Alignment.topCenter,
+                      ),
+                    ),
+                    height: h * 0.3,
+                    width: w,
                   ),
-                ),
-
-                // color: Colors.pink[50],
-                height: h * 0.3,
-                width: w,
-                child: const Padding(
-                  padding: EdgeInsets.only(top: 180),
-                  child: Text(
-                    " ",
-                    style: TextStyle(
-                        fontSize: 28,
-                        color: Colors.black,
-                        height: 2,
-                        decorationThickness: 1.5,
-                        fontStyle: FontStyle.italic),
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 11, 11, 11),
+                        borderRadius:
+                            BorderRadius.vertical(bottom: Radius.circular(16)),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Menstrual Cycle ",
+                          style: GoogleFonts.getFont(
+                            'Khand',
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 243, 240, 240),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
           ),
@@ -196,35 +260,51 @@ class _ContentState extends State<Content> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Content1(widget.email)),
+                MaterialPageRoute(builder: (context) => Content5(widget.email)),
               );
             },
             child: Card(
               elevation: 5,
-              child: Container(
-                color: Colors.pink[50],
-                height: h * 0.3,
-                width: w,
-                child: const Center(
-                  child: Text(
-                    "Your Menstural Cycle ",
-                    style: TextStyle(fontSize: 40),
+              child: Stack(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      image: DecorationImage(
+                        scale: 1,
+                        image: AssetImage("assets/images/pad.jpg"),
+                        fit: BoxFit.cover,
+                        alignment: Alignment.topCenter,
+                      ),
+                    ),
+                    height: h * 0.3,
+                    width: w,
                   ),
-                ),
-              ),
-            ),
-          ),
-          Card(
-            elevation: 5,
-            child: Container(
-              color: Colors.pink[50],
-              height: h * 0.3,
-              width: w,
-              child: const Center(
-                child: Text(
-                  "Your Menstural Cycle ",
-                  style: TextStyle(fontSize: 40),
-                ),
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 12, 12, 12),
+                        borderRadius:
+                            BorderRadius.vertical(bottom: Radius.circular(16)),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "PMDD ",
+                          style: GoogleFonts.getFont(
+                            'Khand',
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 253, 250, 250),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),

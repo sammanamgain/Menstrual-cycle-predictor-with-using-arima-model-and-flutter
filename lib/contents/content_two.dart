@@ -10,17 +10,17 @@ import '../screens/calendar.dart';
 import '../symptoms.dart';
 import '../timerui.dart';
 
-class Content1 extends StatefulWidget {
+class Content2 extends StatefulWidget {
   final String? email;
-  Content1(this.email);
+  Content2(this.email);
 
   @override
-  State<Content1> createState() => _ContentState();
+  State<Content2> createState() => _ContentState();
 }
 
-class _ContentState extends State<Content1> {
+class _ContentState extends State<Content2> {
   Future<String> _loadFileContents() async {
-    String contents = await rootBundle.loadString('assets/files/aa.txt');
+    String contents = await rootBundle.loadString('assets/files/bb.txt');
     return contents;
   }
 
@@ -30,7 +30,7 @@ class _ContentState extends State<Content1> {
         home: Scaffold(
       appBar: AppBar(
         title: Text(
-          "माहिनावरी का वास्तविकताहरु ",
+          "महिनावारी रोकियो ?  ",
           style: GoogleFonts.getFont(
             'Khand',
             fontSize: 30,
@@ -54,7 +54,7 @@ class _ContentState extends State<Content1> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Image.asset(
-              'assets/images/c1.jpg',
+              'assets/images/youn.jpg',
               height: 200,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -62,7 +62,7 @@ class _ContentState extends State<Content1> {
             Padding(
               padding: EdgeInsets.all(16),
               child: FutureBuilder(
-                future: rootBundle.loadString('assets/files/aa.txt'),
+                future: rootBundle.loadString('assets/files/bb.txt'),
                 builder:
                     (BuildContext context, AsyncSnapshot<String> snapshot) {
                   if (snapshot.connectionState == ConnectionState.done &&
@@ -129,7 +129,7 @@ class _ContentState extends State<Content1> {
           BottomNavigationBarItem(
             icon: GestureDetector(
               onTap: () {
-                Get.to(() => Content1(widget.email));
+                Get.to(() => Content2(widget.email));
               },
               child: const Icon(Icons.content_copy),
             ),
