@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:ui';
-
+import 'retrive/retrievedata.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,12 +26,12 @@ class MyApps extends StatefulWidget {
 
 class _MyAppsState extends State<MyApps> {
   NepaliDateTime _dateTime = NepaliDateTime.now();
-  void _showdatepicker() async {
+  void _showdatepicker(String? periodDate) async {
     await showDatePicker(
       context: context,
       initialDate: NepaliDateTime.now(),
       firstDate: NepaliDateTime(2078),
-      lastDate: NepaliDateTime.now(),
+      lastDate: NepaliDateTime(2090),
     ).then((value) {
       if (value == null) {
         print('Date picker was cancelled');
@@ -42,6 +42,20 @@ class _MyAppsState extends State<MyApps> {
         _dateTime = updatevalue!;
         NepaliUnicode.convert('value');
       });
+      //'${now.year}-${now.month}-${now.day}'
+      NepaliDateTime? date2;
+      if (periodDate != null) {
+        date2 = NepaliDateTime.parse(periodDate);
+      } else {}
+
+      NepaliDateTime now = NepaliDateTime.now();
+      Duration difference = _dateTime.difference(date2!);
+      int cycleLength = difference.inDays;
+      print(
+          'The value of date2! is ${date2.year} - ${date2.month} - ${date2.day}');
+      print('The value of cycleLength is $cycleLength');
+      addCycleData(
+          widget.email, cycleLength, '${now.year}-${now.month}-${now.day}');
     });
   }
 
@@ -125,44 +139,55 @@ class _MyAppsState extends State<MyApps> {
                 height: h * 0.06,
                 width: w,
               ),
-              Container(
-                width: w * 0.7,
-                height: h * 0.2,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'महिनावारीको मिति परिवर्तन गर्न',
-                      style: GoogleFonts.getFont(
-                        'Khand',
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 5, 5, 5),
-                      ),
-                    ),
-                    SizedBox(
-                      height: h * 0.03,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Color.fromRGBO(39, 3, 27, 0.686),
-                      ),
-                      onPressed: _showdatepicker,
-                      child: Center(
-                        child: Text(
-                          "मिति छान्नु होस्",
-                          style: GoogleFonts.getFont(
-                            'Khand',
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 253, 250, 250),
-                          ),
+              FutureBuilder<User?>(
+                  future: readUser(widget.email),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      final user = snapshot.data!;
+                      return Container(
+                        width: w * 0.7,
+                        height: h * 0.2,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'महिनावारीको मिति परिवर्तन गर्न',
+                              style: GoogleFonts.getFont(
+                                'Khand',
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 5, 5, 5),
+                              ),
+                            ),
+                            SizedBox(
+                              height: h * 0.03,
+                            ),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Color.fromRGBO(39, 3, 27, 0.686),
+                              ),
+                              onPressed: () {
+                                _showdatepicker(user.periodDate);
+                              },
+                              child: Center(
+                                child: Text(
+                                  "मिति छान्नु होस्",
+                                  style: GoogleFonts.getFont(
+                                    'Khand',
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromARGB(255, 253, 250, 250),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+                      );
+                    } else {
+                      return Text("Something is Wrong");
+                    }
+                  }),
             ],
           ),
         ],
