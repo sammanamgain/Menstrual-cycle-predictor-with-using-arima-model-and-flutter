@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:menstrual_period_tracker/screens/stat.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../contents/content_one.dart';
 
 import '../symptoms.dart';
 import '../timerui.dart';
@@ -20,20 +21,6 @@ class Content extends StatefulWidget {
 class _ContentState extends State<Content> {
   @override
   Widget build(BuildContext context) {
-    List<String> urlist = [
-      "https://www.womenshealth.gov/menstrual-cycle/your-menstrual-cycle?fbclid=IwAR2IkbThjhfqUsZdT3J1WKHIGpRzQp99Uc5VRlZ6kiLUWmwwx1YBWuvQ4to",
-      "https://www.onlinekhabar.com/2017/11/641385?fbclid=IwAR2MLdqEeLw34qDd0m5-kV5-TW6K0kLKeI0BkHZkOychWeFhM4TeFOfpQlk",
-      "https://www.onlinekhabar.com/2013/09/119537?fbclid=IwAR2zuK5d7NH_p4B_gallqGvH_c9w7GwSRmznfdQe630uf-c4TdyJguyE1cQ"
-    ];
-    List<Uri> url = [];
-    for (var string in urlist) {
-      var uri = Uri.tryParse(
-          string); //urlist vaneko string ko collection ho teslai uri ma convert gareko uri vankeo Uri object type data ho jun lai link jasto treat garxa
-      if (uri != null) {
-        url.add(uri);
-      }
-    }
-
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     int? h1 = 50;
@@ -60,7 +47,10 @@ class _ContentState extends State<Content> {
         children: [
           GestureDetector(
             onTap: () {
-              launchUrl(url[0]);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Content1(widget.email)),
+              );
             },
             child: Card(
               elevation: 5,
@@ -93,7 +83,10 @@ class _ContentState extends State<Content> {
           ),
           GestureDetector(
             onTap: () {
-              launchUrl(url[1]);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Content1(widget.email)),
+              );
             },
             child: Card(
               elevation: 5,
@@ -127,7 +120,10 @@ class _ContentState extends State<Content> {
           ),
           GestureDetector(
             onTap: () {
-              launchUrl(url[2]);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Content1(widget.email)),
+              );
             },
             child: Card(
               elevation: 5,
@@ -161,7 +157,10 @@ class _ContentState extends State<Content> {
           ),
           GestureDetector(
             onTap: () {
-              launchUrl(url[1]);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Content1(widget.email)),
+              );
             },
             child: Card(
               elevation: 5,
@@ -195,7 +194,10 @@ class _ContentState extends State<Content> {
           ),
           GestureDetector(
             onTap: () {
-              launchUrl(url[2]);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Content1(widget.email)),
+              );
             },
             child: Card(
               elevation: 5,
