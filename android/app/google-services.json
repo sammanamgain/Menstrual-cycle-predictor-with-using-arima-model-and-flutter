@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "1016800437952",
+    "firebase_url": "https://menstrualperiodtracker-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "menstrualperiodtracker",
+    "storage_bucket": "menstrualperiodtracker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1016800437952:android:5dcbbae19405bea1726f25",
+        "android_client_info": {
+          "package_name": "com.example.menstrual_period_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1016800437952-9e02cbcggh3ar07f546s72gcup24b99n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkk3gt-C1VIX97x92gw2NB4zMIvCvIzoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1016800437952-9e02cbcggh3ar07f546s72gcup24b99n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1016800437952:android:a912e789fbf619c6726f25",
+        "android_client_info": {
+          "package_name": "com.example.menstrual_period_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1016800437952-t48edttv1ds2jusepcpaae5tckd23kp2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.menstrual_period_tracker",
+            "certificate_hash": "b42afc0d910c1e5ad26f1c0cead18b2df667939b"
+          }
+        },
+        {
+          "client_id": "1016800437952-9e02cbcggh3ar07f546s72gcup24b99n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkk3gt-C1VIX97x92gw2NB4zMIvCvIzoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1016800437952-9e02cbcggh3ar07f546s72gcup24b99n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

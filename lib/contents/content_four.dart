@@ -1,0 +1,143 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:menstrual_period_tracker/screens/stat.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/services.dart';
+
+import '../screens/calendar.dart';
+import '../symptoms.dart';
+import '../timerui.dart';
+
+class Content4 extends StatefulWidget {
+  final String? email;
+  Content4(this.email);
+
+  @override
+  State<Content4> createState() => _ContentState();
+}
+
+class _ContentState extends State<Content4> {
+  Future<String> _loadFileContents() async {
+    String contents = await rootBundle.loadString('assets/files/dd.txt');
+    return contents;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Menstrual Cycle ",
+          style: GoogleFonts.getFont(
+            'Khand',
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+            color: Color.fromARGB(255, 253, 250, 250),
+          ),
+        ),
+        backgroundColor: Color.fromARGB(255, 66, 13, 106),
+        toolbarHeight: 80,
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Image.asset(
+              'assets/images/edu.jpg',
+              height: 200,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: FutureBuilder(
+                future: rootBundle.loadString('assets/files/dd.txt'),
+                builder:
+                    (BuildContext context, AsyncSnapshot<String> snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done &&
+                      snapshot.hasData) {
+                    return Text(snapshot.data!, style: TextStyle(fontSize: 20));
+                  } else {
+                    return Text("Loading...", style: TextStyle(fontSize: 20));
+                  }
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 4,
+        backgroundColor:
+            Color.fromARGB(255, 66, 13, 106), // set background color
+        type: BottomNavigationBarType.fixed, // set type to fixed
+        selectedItemColor: Colors.white, // set selected item color
+        unselectedItemColor: Colors.grey[400], // set unselected item color
+        iconSize: 30, // set icon sizeincrease the size of the icons
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: GestureDetector(
+              onTap: () {
+                Get.to(() => MyApps(widget.email));
+              },
+              child: const Icon(Icons.timer),
+            ),
+            label: '',
+            backgroundColor: const Color.fromARGB(255, 66, 13, 106),
+          ),
+          BottomNavigationBarItem(
+            icon: GestureDetector(
+              onTap: () {
+                Get.to(() => Calendar(widget.email));
+              },
+              child: const Icon(Icons.calendar_month),
+            ),
+            label: '',
+            backgroundColor: const Color.fromARGB(255, 66, 13, 106),
+          ),
+          BottomNavigationBarItem(
+            icon: GestureDetector(
+              onTap: () {
+                Get.to(() => MyHomePage(widget.email));
+              },
+              child: const Icon(Icons.girl_sharp),
+            ),
+            label: '',
+            backgroundColor: const Color.fromARGB(255, 66, 13, 106),
+          ),
+          BottomNavigationBarItem(
+            icon: GestureDetector(
+              onTap: () {
+                Get.to(() => Stat(widget.email));
+              },
+              child: const Icon(Icons.auto_graph),
+            ),
+            label: '',
+            backgroundColor: const Color.fromARGB(255, 66, 13, 106),
+          ),
+          BottomNavigationBarItem(
+            icon: GestureDetector(
+              onTap: () {
+                Get.to(() => Content4(widget.email));
+              },
+              child: const Icon(Icons.content_copy),
+            ),
+            label: '',
+            backgroundColor: const Color.fromARGB(255, 66, 13, 106),
+          ),
+        ],
+      ),
+    ));
+  }
+}
