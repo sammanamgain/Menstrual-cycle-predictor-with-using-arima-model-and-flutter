@@ -29,13 +29,21 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      // theme: ThemeData(fontFamily: 'Caveat'),
+      title: 'Mahina Wari',
+      //theme: ThemeData(),
       home: Scaffold(
+          appBar: AppBar(
+            title: Text('Mahina Wari'),
+            centerTitle: true,
+            leading: Image.asset(
+              'assets/images/Applogo.png', // Replace with the path to your app icon
+            ),
+          ),
           body: Column(
-        children: [
-          Login(),
-        ],
-      )),
+            children: [
+              Login(),
+            ],
+          )),
     );
   }
 }

@@ -114,6 +114,7 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-package
   assets: 
     - assets/images/m.png
+    - assets/images/Applogo.png
     - assets/images/r.png
     - assets/images/f.png
     - assets/images/g.png
