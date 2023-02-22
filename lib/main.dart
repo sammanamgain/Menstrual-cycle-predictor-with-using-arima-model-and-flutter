@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
       //theme: ThemeData(),
       home: Scaffold(
           appBar: AppBar(
-            title: Text('Mahina Wari'),
+            title: const Text('Mahina Wari'),
             centerTitle: true,
             leading: Image.asset(
               'assets/images/Applogo.png', // Replace with the path to your app icon
