@@ -27,7 +27,7 @@ class MyApps extends StatefulWidget {
 class _MyAppsState extends State<MyApps> {
   NepaliDateTime _dateTime = NepaliDateTime.now();
   void _showdatepicker(String? periodDate) async {
-    await showDatePicker(
+    await showMaterialDatePicker(
       context: context,
       initialDate: NepaliDateTime.now(),
       firstDate: NepaliDateTime(2078),
