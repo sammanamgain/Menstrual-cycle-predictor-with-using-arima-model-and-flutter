@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 //import 'package:menstrual_period_tracker/auth_controller.dart';
 import 'package:menstrual_period_tracker/input/input1.dart';
 import 'package:menstrual_period_tracker/loginsignup/loginsignup.dart';
+import 'package:menstrual_period_tracker/ss.dart';
 
 // ignore: must_be_immutable
 class Welcome extends StatelessWidget {

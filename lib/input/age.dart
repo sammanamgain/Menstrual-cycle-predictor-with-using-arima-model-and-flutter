@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:menstrual_period_tracker/timerui.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../data/database.dart';
 import 'input2.dart';
 
 class Age extends StatefulWidget {
@@ -112,8 +113,15 @@ class _AgeState extends State<Age> {
             height: h * 0.1,
           ),
           GestureDetector(
-            onTap: () {
+            onTap: () async {
               createUser(_currentSliderValue.toInt(), widget.email);
+              //RetrieveData? x = await retrieveUserData(widget.email!);
+              // print("printing age");
+
+              //  print(x?.age);
+              // print("printing cyclelength");
+
+              //   print(x?.cycleLength);
               Get.to(() => MyApps(widget.email));
             },
             child: Container(

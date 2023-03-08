@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
 
 import '../symptoms.dart';
 import '../timerui.dart';
@@ -40,6 +41,11 @@ class _StatState extends State<Stat> {
           automaticallyImplyLeading: false,
         ),
         body: ListView(children: [
+          Container(
+            width: 300,
+            height: 200,
+            child: CycleLengthChart(data: data),
+          ),
           Column(
             children: [
               Card(
@@ -230,3 +236,222 @@ class _StatState extends State<Stat> {
     );
   }
 }
+
+// class CycleLengthChart extends StatelessWidget {
+//   final List<CycleData> data;
+//
+//   CycleLengthChart({required this.data});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     List<charts.Series<CycleData, int>> seriesList = [
+//       charts.Series<CycleData, int>(
+//         id: 'Cycle Length',
+//         colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+//         domainFn: (CycleData data, _) => data.cycleNumber,
+//         measureFn: (CycleData data, _) => data.cycleLength,
+//         data: this.data,
+//       )
+//     ];
+//
+//     return charts.LineChart(
+//       seriesList,
+//       animate: false,
+//       animationDuration: Duration(milliseconds: 500),
+//       defaultRenderer: charts.LineRendererConfig(
+//         includePoints: true, // Render points along with lines
+//       ),
+//       primaryMeasureAxis: charts.NumericAxisSpec(
+//         viewport: charts.NumericExtents(20, 35),
+//         tickProviderSpec:
+//         const charts.BasicNumericTickProviderSpec(desiredTickCount: 1),
+//         renderSpec: charts.GridlineRendererSpec(
+//           labelStyle: charts.TextStyleSpec(
+//             fontSize: 14,
+//             color: charts.MaterialPalette.gray.shade400,
+//           ),
+//           lineStyle: charts.LineStyleSpec(
+//             thickness: 0,
+//             color: charts.MaterialPalette.gray.shade200,
+//           ),
+//         ),
+//       ),
+//       behaviors: [
+//          charts.LinePointHighlighter(
+//           symbolRenderer: charts.CircleSymbolRenderer(),
+//         ),
+//         charts.ChartTitle(
+//           'Cycle Length',
+//           behaviorPosition: charts.BehaviorPosition.start,
+//           titleOutsideJustification: charts.OutsideJustification.middle,
+//         ),
+//         charts.ChartTitle(
+//           'Cycle Number',
+//           behaviorPosition: charts.BehaviorPosition.bottom,
+//           titleOutsideJustification: charts.OutsideJustification.middle,
+//         ),
+//
+//        ],
+//       selectionModels: [
+//         charts.SelectionModelConfig(
+//           type: charts.SelectionModelType.info,
+//           changedListener: (model) {}, // Do nothing when selection changes
+//         )
+//       ],
+//     );
+//   }
+// }
+// class CycleLengthChart extends StatelessWidget {
+//   final List<CycleData> data;
+//
+//   CycleLengthChart({required this.data});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     List<charts.Series<CycleData, int>> seriesList = [      charts.Series<CycleData, int>(        id: 'Cycle Length',        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,        domainFn: (CycleData data, _) => data.cycleNumber,        measureFn: (CycleData data, _) => data.cycleLength,        data: this.data,      )    ];
+//
+//     return charts.LineChart(
+//       seriesList,
+//       animate: false,
+//       animationDuration: Duration(milliseconds: 500),
+//       defaultRenderer: charts.LineRendererConfig(
+//         includePoints: true,
+//         curveSmoothness: 0.2,
+//         // Render points along with lines
+//       ),
+//       primaryMeasureAxis: charts.NumericAxisSpec(
+//         viewport: charts.NumericExtents(20, 35),
+//         tickProviderSpec:
+//         const charts.BasicNumericTickProviderSpec(desiredTickCount: 1),
+//         renderSpec: charts.GridlineRendererSpec(
+//           labelStyle: charts.TextStyleSpec(
+//             fontSize: 14,
+//             color: charts.MaterialPalette.gray.shade400,
+//           ),
+//           lineStyle: charts.LineStyleSpec(
+//             thickness: 0,
+//             color: charts.MaterialPalette.gray.shade200,
+//           ),
+//         ),
+//       ),
+//       behaviors: [
+//         charts.LinePointHighlighter(
+//           symbolRenderer: charts.CircleSymbolRenderer(),
+//         ),
+//         charts.ChartTitle(
+//           'Cycle Length',
+//           behaviorPosition: charts.BehaviorPosition.start,
+//           titleOutsideJustification: charts.OutsideJustification.middle,
+//         ),
+//         charts.ChartTitle(
+//           'Cycle Number',
+//           behaviorPosition: charts.BehaviorPosition.bottom,
+//           titleOutsideJustification: charts.OutsideJustification.middle,
+//         ),
+//         charts.SeriesLegend(
+//           position: charts.BehaviorPosition.top,
+//           showMeasures: true,
+//           measureFormatter: (num? value) => value.toString(),
+//         ),
+//       ],
+//       selectionModels: [
+//         charts.SelectionModelConfig(
+//           type: charts.SelectionModelType.info,
+//           changedListener: (model) {}, // Do nothing when selection changes
+//         )
+//       ],
+//     );
+//   }
+// }
+class CycleLengthChart extends StatelessWidget {
+  final List<CycleData> data;
+
+  CycleLengthChart({required this.data});
+
+  @override
+  Widget build(BuildContext context) {
+    List<charts.Series<CycleData, int>> seriesList = [
+      charts.Series<CycleData, int>(
+        id: 'Cycle Length',
+        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+        domainFn: (CycleData data, _) => data.cycleNumber,
+        measureFn: (CycleData data, _) => data.cycleLength,
+        data: this.data,
+      )
+    ];
+
+    return charts.LineChart(
+      seriesList,
+      animate: false,
+      animationDuration: Duration(milliseconds: 500),
+      defaultRenderer: charts.LineRendererConfig(
+        includePoints: true, // Render points along with lines
+        includeArea: true, // Fill the area under the line
+      ),
+      primaryMeasureAxis: charts.NumericAxisSpec(
+        viewport: charts.NumericExtents(20, 35),
+        tickProviderSpec:
+            const charts.BasicNumericTickProviderSpec(desiredTickCount: 1),
+        renderSpec: charts.GridlineRendererSpec(
+          labelStyle: charts.TextStyleSpec(
+            fontSize: 14,
+            color: charts.MaterialPalette.gray.shade400,
+          ),
+          lineStyle: charts.LineStyleSpec(
+            thickness: 0,
+            color: charts.MaterialPalette.gray.shade200,
+          ),
+        ),
+      ),
+      domainAxis: charts.NumericAxisSpec(
+        tickProviderSpec:
+            charts.BasicNumericTickProviderSpec(desiredTickCount: 5),
+        renderSpec: charts.GridlineRendererSpec(
+          labelStyle: charts.TextStyleSpec(
+            fontSize: 14,
+            color: charts.MaterialPalette.gray.shade400,
+          ),
+          lineStyle: charts.LineStyleSpec(
+            thickness: 0,
+            color: charts.MaterialPalette.gray.shade200,
+          ),
+        ),
+      ),
+      behaviors: [
+        charts.ChartTitle(
+          'Cycle Length',
+          behaviorPosition: charts.BehaviorPosition.start,
+          titleOutsideJustification: charts.OutsideJustification.middle,
+        ),
+        charts.ChartTitle(
+          'Cycle Number',
+          behaviorPosition: charts.BehaviorPosition.bottom,
+          titleOutsideJustification: charts.OutsideJustification.middle,
+        ),
+      ],
+      selectionModels: [
+        charts.SelectionModelConfig(
+          type: charts.SelectionModelType.info,
+          changedListener: (model) {}, // Do nothing when selection changes
+        )
+      ],
+    );
+  }
+}
+
+class CycleData {
+  final int cycleNumber;
+  final int cycleLength;
+
+  CycleData({required this.cycleNumber, required this.cycleLength});
+}
+
+List<CycleData> data = [
+  CycleData(cycleNumber: 1, cycleLength: 28),
+  CycleData(cycleNumber: 2, cycleLength: 26),
+  CycleData(cycleNumber: 3, cycleLength: 30),
+  CycleData(cycleNumber: 4, cycleLength: 29),
+  CycleData(cycleNumber: 5, cycleLength: 27),
+];
+
+// CycleLengthChart(data: data);
