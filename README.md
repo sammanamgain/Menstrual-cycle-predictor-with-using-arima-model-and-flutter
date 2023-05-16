@@ -5,7 +5,7 @@
 
 This project is a Flutter application with a Flask API that uses ARIMA model for prediction. The application also uses Firebase for authentication and Firestore for database management.
 
-The Flutter application takes input age, cycle length, period length, and date and predicts the next cycle. It also shows how many days are remaining and when the remaining days come to 5 days, it shows a notification every day. The application also includes a calendar, statistics, symptoms, and content UI.
+The Flutter application takes input age, cycle length, period length, and period date and predicts the next cycle. It also shows how many days are remaining and when the remaining days come to 5 days, it shows a notification every day. The application also includes a nepali calendar, statistics, symptoms, and content UI.
 
 
 
